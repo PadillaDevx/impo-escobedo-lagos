@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, AlertCircle } from 'lucide-react';
+import { Calendar } from 'lucide-react';
+import { PageHero, LoadingSpinner, ErrorMessage } from '../components/common';
+import { API_URL } from '../config/constants';
 
 export const Blog = () => {
   const navigate = useNavigate();
@@ -9,13 +11,11 @@ export const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch(`${API_URL}/api/news`);
-        
+
         if (response.ok) {
           const data = await response.json();
           // Asegurar que data es un array
@@ -34,40 +34,23 @@ export const Blog = () => {
     };
 
     fetchNews();
-  }, [API_URL]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="pt-20">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-cyan-500 to-blue-500 text-white py-20">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-5xl font-bold mb-6">Noticias</h1>
-            <p className="text-xl text-cyan-50 max-w-3xl mx-auto">
-              Mantente actualizado con las últimas tendencias, tips y noticias del comercio internacional
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Noticias"
+        subtitle="Mantente actualizado con las últimas tendencias, tips y noticias del comercio internacional"
+      />
 
       {/* Posts Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
+      <section className="section section-gray">
+        <div className="container-custom">
           {isLoading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-600 mx-auto"></div>
-              <p className="mt-4 text-gray-600">Cargando noticias...</p>
-            </div>
+            <LoadingSpinner message="Cargando noticias..." />
           ) : error ? (
-            <div className="max-w-md mx-auto bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
-              <div className="flex items-center">
-                <AlertCircle className="h-6 w-6 text-red-500 mr-3" />
-                <p className="text-red-700">{error}</p>
-              </div>
-            </div>
+            <ErrorMessage message={error} />
           ) : posts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600 text-lg">No hay noticias publicadas aún.</p>
@@ -100,14 +83,14 @@ export const Blog = () => {
                   ) : (
                     <div className="h-48 bg-gradient-to-br from-cyan-500 to-blue-500"></div>
                   )}
-                  
+
                   <div className="p-6">
                     <span className="text-xs font-semibold text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full">
                       {post.category}
                     </span>
                     <h3 className="text-xl font-bold text-gray-800 mt-4 mb-3">{post.title}</h3>
                     <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                    
+
                     <div className="flex items-center justify-between text-sm text-gray-500 border-t pt-4">
                       <div className="flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />

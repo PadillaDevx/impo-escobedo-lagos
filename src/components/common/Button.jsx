@@ -1,27 +1,18 @@
 import { motion } from 'framer-motion';
 
-export const Button = ({ 
-  children, 
-  variant = 'primary', 
-  className = '', 
-  ...props 
-}) => {
-  const baseStyles = 'px-8 py-3 rounded-lg font-semibold transition-colors';
-  
-  const variants = {
-    primary: 'bg-white text-cyan-600 hover:bg-cyan-50',
-    secondary: 'border-2 border-white text-white hover:bg-white hover:text-cyan-600',
-    outline: 'border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white'
-  };
-
-  return (
-    <motion.button
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      {...props}
-    >
-      {children}
-    </motion.button>
-  );
+const variantClasses = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  outline: 'border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white'
 };
+
+export const Button = ({ children, variant = 'primary', className = '', ...props }) => (
+  <motion.button
+    className={`btn-base ${variantClasses[variant]} ${className}`}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    {...props}
+  >
+    {children}
+  </motion.button>
+);

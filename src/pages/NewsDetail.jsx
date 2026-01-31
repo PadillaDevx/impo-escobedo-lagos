@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Tag, ArrowLeft, AlertCircle } from 'lucide-react';
+import { Calendar, Tag, ArrowLeft } from 'lucide-react';
+import { LoadingSpinner, ErrorMessage } from '../components/common';
+import { API_URL } from '../config/constants';
 
 export const NewsDetail = () => {
   const { id } = useParams();
@@ -10,13 +12,11 @@ export const NewsDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch(`${API_URL}/api/news/${id}`);
-        
+
         if (response.ok) {
           const data = await response.json();
           setNews(data);
@@ -34,15 +34,12 @@ export const NewsDetail = () => {
     };
 
     fetchNews();
-  }, [id, API_URL]);
+  }, [id]);
 
   if (isLoading) {
     return (
       <div className="min-h-screen pt-20 bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Cargando noticia...</p>
-        </div>
+        <LoadingSpinner message="Cargando noticia..." />
       </div>
     );
   }
@@ -50,11 +47,7 @@ export const NewsDetail = () => {
   if (error || !news) {
     return (
       <div className="min-h-screen pt-20 bg-gray-50 flex items-center justify-center">
-        <div className="max-w-md mx-auto bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
-          <div className="flex items-center mb-4">
-            <AlertCircle className="h-6 w-6 text-red-500 mr-3" />
-            <h3 className="text-lg font-semibold text-red-700">{error || 'Noticia no encontrada'}</h3>
-          </div>
+        <ErrorMessage message={error || 'Noticia no encontrada'}>
           <button
             onClick={() => navigate('/blog')}
             className="flex items-center text-cyan-600 hover:text-cyan-700 font-medium"
@@ -62,7 +55,7 @@ export const NewsDetail = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Volver a Noticias
           </button>
-        </div>
+        </ErrorMessage>
       </div>
     );
   }
@@ -70,7 +63,7 @@ export const NewsDetail = () => {
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       {/* Botón Volver */}
-      <div className="container mx-auto px-6 py-6">
+      <div className="container-custom py-6">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

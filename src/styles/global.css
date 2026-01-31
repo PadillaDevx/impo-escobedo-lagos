@@ -1,0 +1,208 @@
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================= */
+/* Estilos globales - Impo Escobedo de Lagos */
+/* ============================================= */
+
+/* Colores del tema */
+:root {
+    --color-primary: #06b6d4;
+    /* cyan-500 */
+    --color-primary-dark: #0891b2;
+    /* cyan-600 */
+    --color-primary-light: #22d3ee;
+    /* cyan-400 */
+    --color-secondary: #3b82f6;
+    /* blue-500 */
+    --color-secondary-dark: #2563eb;
+    /* blue-600 */
+
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Bordes */
+    --border-radius-sm: 0.5rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+    --border-radius-xl: 1.5rem;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* Transiciones */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+}
+
+/* Gradientes reutilizables */
+.gradient-primary {
+    background: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+}
+
+.gradient-primary-hover {
+    background: linear-gradient(to bottom right, var(--color-primary-dark), var(--color-secondary-dark));
+}
+
+.hero-gradient {
+    background: linear-gradient(to bottom right, #06b6d4, #3b82f6);
+}
+
+/* Botones base */
+.btn-base {
+    padding: 0.75rem 2rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--color-primary-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-gray-50);
+}
+
+.btn-secondary {
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: var(--color-primary-dark);
+}
+
+/* Cards */
+.card {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition: box-shadow var(--transition-normal);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-2xl);
+}
+
+/* Contenedores */
+.container-custom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Títulos */
+.title-hero {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.title-section {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.title-card {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-gray-800);
+}
+
+/* Textos */
+.text-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+}
+
+.text-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+}
+
+/* Secciones */
+.section {
+    padding: 5rem 0;
+}
+
+.section-gray {
+    background-color: var(--color-gray-50);
+}
+
+/* Animaciones reutilizables */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Links y hover states */
+.link-primary {
+    color: var(--color-primary-dark);
+    transition: color var(--transition-fast);
+}
+
+.link-primary:hover {
+    color: var(--color-primary);
+}
+
+/* Utilidades */
+.text-gradient {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bg-pattern {
+    background-image: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-custom {
+        padding: 0 1rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+}

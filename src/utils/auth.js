@@ -1,5 +1,4 @@
-// Utilidades para autenticación
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+import { API_URL } from '../config/constants';
 
 export const login = async (username, password) => {
   try {

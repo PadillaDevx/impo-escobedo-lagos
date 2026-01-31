@@ -1,6 +1,6 @@
 {
   "name": "impo-escobedo-lagos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "homepage": "https://Janmxgaming.github.io/impo-escobedo-lagos",
   "dependencies": {
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_API_URL=https://impo-escobedo-lagos.onrender.com react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",

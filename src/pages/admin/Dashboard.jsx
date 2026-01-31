@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  LogOut, 
-  PlusCircle, 
-  Edit, 
-  Trash2, 
-  Eye, 
+import {
+  LogOut,
+  PlusCircle,
+  Edit,
+  Trash2,
+  Eye,
   EyeOff,
   Newspaper,
   Calendar,
   User as UserIcon
 } from 'lucide-react';
 import { logout, isAuthenticated, getToken, getUser } from '../../utils/auth';
+import { API_URL, NEWS_CATEGORIES } from '../../config/constants';
 
 const Dashboard = () => {
   const [news, setNews] = useState([]);
@@ -21,8 +22,6 @@ const Dashboard = () => {
   const [editingNews, setEditingNews] = useState(null);
   const navigate = useNavigate();
   const user = getUser();
-
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   const fetchNews = async () => {
     try {
@@ -181,11 +180,10 @@ const Dashboard = () => {
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
                       <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        item.published 
-                          ? 'bg-green-100 text-green-800' 
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${item.published
+                          ? 'bg-green-100 text-green-800'
                           : 'bg-gray-100 text-gray-800'
-                      }`}>
+                        }`}>
                         {item.published ? 'Publicado' : 'Borrador'}
                       </span>
                       <span className="px-3 py-1 rounded-full text-xs font-medium bg-cyan-100 text-cyan-800">
@@ -264,19 +262,16 @@ const NewsFormModal = ({ news, onClose, onSave }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-  const categories = ['Guías', 'Comercio', 'Logística', 'Tendencias', 'Noticias', 'General'];
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
       const token = getToken();
-      const url = news 
-        ? `${API_URL}/api/news/${news._id}` 
+      const url = news
+        ? `${API_URL}/api/news/${news._id}`
         : `${API_URL}/api/news`;
-      
+
       const method = news ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -341,7 +336,7 @@ const NewsFormModal = ({ news, onClose, onSave }) => {
               value={formData.category}
               onChange={(e) => setFormData({ ...formData, category: e.target.value })}
             >
-              {categories.map(cat => (
+              {NEWS_CATEGORIES.map(cat => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>

@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
-import { Home } from './pages/Home';
+import { Hero } from './components/sections/Hero';
+import { Services } from './components/sections/Services';
+import { BlogPreview } from './components/sections/BlogPreview';
 import { ServicesPage } from './pages/ServicesPage';
 import { About } from './pages/About';
 import { Blog } from './pages/Blog';
@@ -8,6 +10,14 @@ import { NewsDetail } from './pages/NewsDetail';
 import { Contact } from './pages/Contact';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
+
+const Home = () => (
+  <>
+    <Hero />
+    <Services />
+    <BlogPreview />
+  </>
+);
 
 function App() {
   return (
