@@ -1,116 +1,134 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
-import { PageHero, LoadingSpinner, ErrorMessage } from '../components/common';
-import { API_URL } from '../config/constants';
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Calendar, ArrowUpRight, FileText } from "lucide-react";
+import { PageHero, LoadingSpinner, ErrorMessage } from "../components/common";
+import { API_URL } from "../config/constants";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export const Blog = () => {
-  const navigate = useNavigate();
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    const { t, lang } = useLanguage();
+    const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/news`);
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const response = await fetch(`${API_URL}/api/news`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setPosts(Array.isArray(data) ? data : []);
+                } else {
+                    setError("No se pudieron cargar las noticias");
+                    setPosts([]);
+                }
+            } catch (err) {
+                setError("Error de conexión con el servidor");
+                setPosts([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchNews();
+    }, []);
 
-        if (response.ok) {
-          const data = await response.json();
-          // Asegurar que data es un array
-          setPosts(Array.isArray(data) ? data : []);
-        } else {
-          setError('No se pudieron cargar las noticias');
-          setPosts([]);
-        }
-      } catch (error) {
-        console.error('Error al cargar noticias:', error);
-        setError('Error de conexión con el servidor');
-        setPosts([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    const dateLocale = lang === "en" ? "en-US" : "es-MX";
 
-    fetchNews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return (
+        <div className="bg-[var(--paper)] text-[var(--ink)]">
+            <PageHero
+                eyebrow={t("nav.blog")}
+                title={t("blogPage.hero.title")}
+                subtitle={t("blogPage.hero.subtitle")}
+            />
 
-  return (
-    <div className="pt-20">
-      <PageHero
-        title="Noticias"
-        subtitle="Mantente actualizado con las últimas tendencias, tips y noticias del comercio internacional"
-      />
+            <section className="py-24 md:py-28 px-5 md:px-8">
+                <div className="max-w-[1280px] mx-auto">
+                    {isLoading ? (
+                        <LoadingSpinner message={t("blogPage.loading")} />
+                    ) : error ? (
+                        <ErrorMessage message={error} />
+                        ) : posts.length === 0 ? (
+                        <div className="border border-dashed border-[var(--line)] py-20 px-8 text-center">
+                            <FileText
+                                className="w-12 h-12 mx-auto text-[var(--ink-soft)] mb-4"
+                                strokeWidth={1.2}
+                            />
+                            <p className="text-[var(--ink-soft)] text-lg mb-4">
+                                {t("blogPage.empty")}
+                            </p>
+                            <Link
+                                to="/contacto"
+                                className="inline-flex items-center gap-2 label-caps text-[var(--gold)] hover:text-[var(--gold-dark)] link-underline"
+                            >
+                                {t("nav.contact")}
+                                <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {posts.map((post, index) => (
+                                <motion.article
+                                    key={post._id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: index * 0.08, duration: 0.6 }}
+                                    onClick={() => navigate(`/blog/${post._id}`)}
+                                    className="group bg-[var(--paper-warm)] border border-[var(--line-soft)] hover:border-[var(--gold)] overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                                >
+                                    <Link to={`/blog/${post._id}`} className="block relative h-52 overflow-hidden bg-[var(--navy-deep)]">
+                                        {post.imageUrl ? (
+                                            <img
+                                                src={post.imageUrl}
+                                                alt={post.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-105"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = "none";
+                                                }}
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy-surface)] to-[var(--maritime)]" />
+                                        )}
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-2.5 py-1 bg-[var(--gold)] text-[var(--navy-deep)] label-caps text-[9px]">
+                                                {post.category}
+                                            </span>
+                                        </div>
+                                    </Link>
 
-      {/* Posts Grid */}
-      <section className="section section-gray">
-        <div className="container-custom">
-          {isLoading ? (
-            <LoadingSpinner message="Cargando noticias..." />
-          ) : error ? (
-            <ErrorMessage message={error} />
-          ) : posts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">No hay noticias publicadas aún.</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
-                <motion.article
-                  key={post._id}
-                  onClick={() => navigate(`/blog/${post._id}`)}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  {/* Imagen de la noticia */}
-                  {post.imageUrl ? (
-                    <div className="h-48 overflow-hidden">
-                      <img
-                        src={post.imageUrl}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.parentElement.innerHTML = '<div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-500"></div>';
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-48 bg-gradient-to-br from-cyan-500 to-blue-500"></div>
-                  )}
-
-                  <div className="p-6">
-                    <span className="text-xs font-semibold text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full">
-                      {post.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-800 mt-4 mb-3">{post.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-
-                    <div className="flex items-center justify-between text-sm text-gray-500 border-t pt-4">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(post.createdAt).toLocaleDateString('es-MX', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric'
-                        })}
-                      </div>
-                      <span className="text-cyan-600 font-semibold hover:underline">
-                        Leer más →
-                      </span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          )}
+                                    <div className="p-6 md:p-7">
+                                        <div className="flex items-center gap-4 label-caps text-[var(--ink-muted)] mb-4">
+                                            <span className="flex items-center gap-1.5">
+                                                <Calendar className="w-3 h-3" strokeWidth={1.5} />
+                                                {new Date(post.createdAt).toLocaleDateString(
+                                                    dateLocale,
+                                                    { year: "numeric", month: "short", day: "numeric" }
+                                                )}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xl md:text-[1.4rem] font-light text-[var(--ink)] tracking-tight mb-3 leading-snug group-hover:text-[var(--gold)] transition-colors text-balance">
+                                            {post.title}
+                                        </h3>
+                                        <p className="text-[var(--ink-soft)] text-[15px] font-light leading-relaxed line-clamp-3 text-pretty">
+                                            {post.excerpt}
+                                        </p>
+                                        <span className="mt-5 inline-flex items-center gap-2 label-caps text-[var(--gold)] group-hover:text-[var(--gold-dark)] transition-colors">
+                                            {t("blogPage.readMore")}
+                                            <ArrowUpRight
+                                                className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                                strokeWidth={1.5}
+                                            />
+                                        </span>
+                                    </div>
+                                </motion.article>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 };
