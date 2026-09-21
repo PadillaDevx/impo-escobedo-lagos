@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
-import { useTheme } from "../../contexts/ThemeContext";
 
 export const Hero = () => {
     const { t } = useLanguage();
-    const { isDark } = useTheme();
     const [lightsOn, setLightsOn] = useState(false);
 
     const heroImage = `${process.env.PUBLIC_URL}/images/image.png`;
