@@ -30,7 +30,7 @@ const Home = () => (
 
 function App() {
     return (
-        <Router basename="/impo-escobedo-lagos">
+        <Router>
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />

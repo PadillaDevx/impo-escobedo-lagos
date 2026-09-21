@@ -2,7 +2,6 @@
   "name": "impo-escobedo-lagos",
   "version": "0.1.1",
   "private": true,
-  "homepage": "https://Janmxgaming.github.io/impo-escobedo-lagos",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
