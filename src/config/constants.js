@@ -46,7 +46,7 @@ export const SERVICES_DATA = [
         fullDescription:
             "Gestionamos todo el proceso de comercio internacional, desde la documentación hasta la entrega final de tu mercancía.",
         features: [
-            "Gestión de documentación aduanal",
+            "Gestión de documentación de comercio exterior",
             "Coordinación de transporte internacional",
             "Seguimiento en tiempo real",
             "Optimización de costos logísticos",
@@ -67,8 +67,8 @@ export const SERVICES_DATA = [
         ],
     },
     {
-        id: "aduanal",
-        title: "Asesoría Aduanal",
+        id: "comercio-exterior",
+        title: "Asesoría en Comercio Exterior",
         shortDescription:
             "Expertos en regulaciones aduaneras, facilitamos el despacho de tu mercancía sin complicaciones.",
         fullDescription:

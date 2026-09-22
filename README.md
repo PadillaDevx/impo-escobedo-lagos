@@ -1,6 +1,6 @@
 # Impo Escobedo de Lagos
 
-Sitio web corporativo para servicios de importaciones, exportaciones y asesoría logística aduanal.
+Sitio web corporativo para servicios de importaciones, exportaciones y asesoría logística de comercio exterior.
 
 ## 🚀 Inicio Rápido
 

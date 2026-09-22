@@ -36,7 +36,7 @@ const es = {
     "hero.eyebrow": "Operaciones globales",
     "hero.title": "Excelencia técnica en logística y comercio internacional",
     "hero.subtitle":
-        "Estrategias precisas en importación, exportación y gestión aduanal para la mediana y gran industria.",
+        "Estrategias precisas en importación, exportación y gestión de comercio exterior para la mediana y gran industria.",
     "hero.cta": "Iniciar consulta",
     "hero.secondary": "Conocer servicios",
     "hero.scroll": "Desplázate para descubrir",
@@ -45,7 +45,7 @@ const es = {
     "metrics.years.label": "Años de experiencia",
     "metrics.teus.label": "TEUs movilizados al año",
     "metrics.routes.label": "Rutas comerciales",
-    "metrics.accuracy.label": "Precisión aduanal",
+    "metrics.accuracy.label": "Precisión en comercio exterior",
 
     // ----- Servicios (preview en home) -----
     "services.eyebrow": "Áreas de práctica",
@@ -73,7 +73,7 @@ const es = {
     "service.logistics.feature3": "Reducción de variabilidad",
     "service.logistics.feature4": "Análisis costo-tiempo",
 
-    "service.customs.title": "Asesoría aduanal",
+    "service.customs.title": "Asesoría en comercio exterior",
     "service.customs.short":
         "Cumplimiento normativo riguroso y representación ante autoridades aduaneras.",
     "service.customs.description":
@@ -141,7 +141,7 @@ const es = {
         "Describa brevemente su volumen operativo y rutas principales…",
     "contact.interest.shipping": "Importación marítima",
     "contact.interest.land": "Exportación terrestre",
-    "contact.interest.consulting": "Consultoría aduanal",
+    "contact.interest.consulting": "Consultoría en comercio exterior",
     "contact.interest.audit": "Auditoría logística",
 
     // ----- Página Nosotros -----
@@ -153,7 +153,7 @@ const es = {
     "aboutPage.history.body1":
         "Impo Escobedo de Lagos nace de la visión de conectar negocios locales con mercados globales, facilitando el comercio internacional a través de servicios altamente especializados.",
     "aboutPage.history.body2":
-        "Con años de experiencia en el sector, nos hemos consolidado como una firma referente en asesoría logística y aduanal, ayudando a empresas a expandir sus horizontes comerciales con seguridad.",
+        "Con años de experiencia en el sector, nos hemos consolidado como una firma referente en asesoría logística y de comercio exterior, ayudando a empresas a expandir sus horizontes comerciales con seguridad.",
     "aboutPage.values.title": "Nuestros valores",
     "aboutPage.values.mission.title": "Misión",
     "aboutPage.values.mission.text":
@@ -175,7 +175,7 @@ const es = {
     "servicesPage.benefit.delivery": "Entregas a tiempo",
     "servicesPage.cta.title": "¿Listo para empezar?",
     "servicesPage.cta.subtitle":
-        "Conversemos sobre sus necesidades logísticas y aduanales.",
+        "Conversemos sobre sus necesidades logísticas y de comercio exterior.",
     "servicesPage.cta.button": "Solicitar asesoría",
 
     // ----- Página Contacto -----
@@ -286,7 +286,7 @@ const en = {
     "hero.eyebrow": "Global operations",
     "hero.title": "Technical excellence in logistics and international trade",
     "hero.subtitle":
-        "Precise strategies in import, export, and customs management for medium and large industry.",
+        "Precise strategies in import, export, and trade management for medium and large industry.",
     "hero.cta": "Start consultation",
     "hero.secondary": "Explore services",
     "hero.scroll": "Scroll to discover",
@@ -295,7 +295,7 @@ const en = {
     "metrics.years.label": "Years of experience",
     "metrics.teus.label": "TEUs moved per year",
     "metrics.routes.label": "Trade routes",
-    "metrics.accuracy.label": "Customs accuracy",
+    "metrics.accuracy.label": "Trade accuracy",
 
     // ----- Services (preview) -----
     "services.eyebrow": "Practice areas",
@@ -322,7 +322,7 @@ const en = {
     "service.logistics.feature3": "Variability reduction",
     "service.logistics.feature4": "Cost-time analysis",
 
-    "service.customs.title": "Customs advisory",
+    "service.customs.title": "Trade advisory",
     "service.customs.short":
         "Rigorous regulatory compliance and representation before customs authorities.",
     "service.customs.description":
@@ -390,7 +390,7 @@ const en = {
         "Briefly describe your operating volume and main routes…",
     "contact.interest.shipping": "Ocean import",
     "contact.interest.land": "Inland export",
-    "contact.interest.consulting": "Customs consulting",
+    "contact.interest.consulting": "Trade consulting",
     "contact.interest.audit": "Logistics audit",
 
     // ----- About page -----
@@ -402,7 +402,7 @@ const en = {
     "aboutPage.history.body1":
         "Impo Escobedo de Lagos was born from the vision of connecting local businesses with global markets, facilitating international trade through highly specialized services.",
     "aboutPage.history.body2":
-        "With years of experience in the sector, we have established ourselves as a leading firm in logistics and customs advisory, helping companies expand their commercial horizons with confidence.",
+        "With years of experience in the sector, we have established ourselves as a leading firm in logistics and trade advisory, helping companies expand their commercial horizons with confidence.",
     "aboutPage.values.title": "Our values",
     "aboutPage.values.mission.title": "Mission",
     "aboutPage.values.mission.text":
@@ -424,7 +424,7 @@ const en = {
     "servicesPage.benefit.delivery": "On-time deliveries",
     "servicesPage.cta.title": "Ready to get started?",
     "servicesPage.cta.subtitle":
-        "Let's talk about your logistics and customs needs.",
+        "Let's talk about your logistics and trade needs.",
     "servicesPage.cta.button": "Request advisory",
 
     // ----- Contact page -----
