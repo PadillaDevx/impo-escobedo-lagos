@@ -4,6 +4,7 @@ import { Hero } from "./components/sections/Hero";
 import { Metrics } from "./components/sections/Metrics";
 import { Services } from "./components/sections/Services";
 import { Process } from "./components/sections/Process";
+import { Coverage } from "./components/sections/Coverage";
 import { AboutPreview } from "./components/sections/AboutPreview";
 import { BlogPreview } from "./components/sections/BlogPreview";
 import { ContactPreview } from "./components/sections/ContactPreview";
@@ -22,6 +23,7 @@ const Home = () => (
         <Metrics />
         <Services />
         <Process />
+        <Coverage />
         <AboutPreview />
         <BlogPreview />
         <ContactPreview />

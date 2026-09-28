@@ -103,6 +103,23 @@ const es = {
     "process.step4.text":
         "Monitoreo 24/7 y coordinación en puerto hasta la liberación final de la mercancía.",
 
+    // ----- Presencia operativa / Cobertura (home) -----
+    "coverage.eyebrow": "Presencia operativa",
+    "coverage.title": "Cobertura en el territorio nacional",
+    "coverage.subtitle":
+        "Cuatro puntos de operación y cuatro corresponsalías que acompañan cada operación.",
+    "coverage.map.label": "Esquema de cobertura",
+    "coverage.operation.label": "Operación",
+    "coverage.correspondent.label": "Corresponsalías",
+    "coverage.city.nuevoLaredo": "Nuevo Laredo",
+    "coverage.city.reynosa": "Reynosa",
+    "coverage.city.matamoros": "Matamoros",
+    "coverage.city.mexicali": "Mexicali",
+    "coverage.city.colombiaNl": "Colombia, Nuevo León",
+    "coverage.city.manzanillo": "Manzanillo",
+    "coverage.city.veracruz": "Veracruz",
+    "coverage.city.altamira": "Altamira",
+
     // ----- About preview (home) -----
     "about.eyebrow": "Nuestro legado",
     "about.title": "Previsión en el comercio global",
@@ -351,6 +368,23 @@ const en = {
     "process.step4.title": "Tactical execution",
     "process.step4.text":
         "24/7 monitoring and on-port coordination through to the final release of cargo.",
+
+    // ----- Operational presence / Coverage (home) -----
+    "coverage.eyebrow": "Operational presence",
+    "coverage.title": "Coverage across the national territory",
+    "coverage.subtitle":
+        "Four operation points and four correspondents that support every operation.",
+    "coverage.map.label": "Coverage scheme",
+    "coverage.operation.label": "Operation",
+    "coverage.correspondent.label": "Correspondents",
+    "coverage.city.nuevoLaredo": "Nuevo Laredo",
+    "coverage.city.reynosa": "Reynosa",
+    "coverage.city.matamoros": "Matamoros",
+    "coverage.city.mexicali": "Mexicali",
+    "coverage.city.colombiaNl": "Colombia, Nuevo León",
+    "coverage.city.manzanillo": "Manzanillo",
+    "coverage.city.veracruz": "Veracruz",
+    "coverage.city.altamira": "Altamira",
 
     // ----- About preview (home) -----
     "about.eyebrow": "Our legacy",
