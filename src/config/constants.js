@@ -36,52 +36,6 @@ export const NAV_ITEMS = [
     { name: "Contacto", path: "/contacto" },
 ];
 
-// Servicios principales
-export const SERVICES_DATA = [
-    {
-        id: "importaciones",
-        title: "Importaciones y Exportaciones",
-        shortDescription:
-            "Gestionamos todo el proceso de comercio internacional para que tu mercancía llegue a tiempo y en perfectas condiciones.",
-        fullDescription:
-            "Gestionamos todo el proceso de comercio internacional, desde la documentación hasta la entrega final de tu mercancía.",
-        features: [
-            "Gestión de documentación de comercio exterior",
-            "Coordinación de transporte internacional",
-            "Seguimiento en tiempo real",
-            "Optimización de costos logísticos",
-        ],
-    },
-    {
-        id: "logistica",
-        title: "Asesoría Logística",
-        shortDescription:
-            "Te guiamos en cada paso del proceso logístico, optimizando costos y tiempos de entrega para tu negocio.",
-        fullDescription:
-            "Te acompañamos en cada etapa del proceso logístico con soluciones personalizadas para tu negocio.",
-        features: [
-            "Análisis de rutas óptimas",
-            "Selección de transportistas",
-            "Gestión de almacenamiento",
-            "Control de inventarios",
-        ],
-    },
-    {
-        id: "comercio-exterior",
-        title: "Asesoría en Comercio Exterior",
-        shortDescription:
-            "Expertos en regulaciones aduaneras, facilitamos el despacho de tu mercancía sin complicaciones.",
-        fullDescription:
-            "Expertos en regulaciones aduaneras nacionales e internacionales para facilitar tus operaciones.",
-        features: [
-            "Clasificación arancelaria",
-            "Cumplimiento normativo",
-            "Despacho aduanero express",
-            "Resolución de contingencias",
-        ],
-    },
-];
-
 // Valores corporativos
 export const VALUES_DATA = [
     {
