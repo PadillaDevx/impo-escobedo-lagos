@@ -1,60 +1,64 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { MEXICO_PATH, MEXICO_VIEWBOX } from "./mexicoMap";
 
-// Esquema de cobertura (posición sobre el lienzo, no coordenadas geográficas)
 const OPERATION = [
-    { id: "nuevoLaredo", x: 272, y: 66, anchor: "start", dx: 12, dy: 4 },
-    { id: "reynosa", x: 348, y: 96, anchor: "start", dx: 12, dy: 4 },
-    { id: "matamoros", x: 390, y: 132, anchor: "end", dx: -12, dy: 4 },
-    { id: "mexicali", x: 72, y: 120, anchor: "start", dx: 12, dy: 4 },
+    { id: "nuevoLaredo", x: 575.6, y: 231.2, anchor: "start", dx: 14, dy: 6 },
+    { id: "reynosa", x: 614.7, y: 278, anchor: "end", dx: -14, dy: 6 },
+    { id: "matamoros", x: 638.8, y: 285.7, anchor: "start", dx: 14, dy: 6 },
+    { id: "mexicali", x: 105.7, y: 35.1, anchor: "start", dx: 14, dy: 6 },
 ];
 
 const CORRESPONDENTS = [
-    { id: "colombiaNl", x: 296, y: 152, anchor: "start", dx: 12, dy: 4 },
-    { id: "altamira", x: 378, y: 226, anchor: "end", dx: -12, dy: 4 },
-    { id: "veracruz", x: 326, y: 264, anchor: "end", dx: -12, dy: 4 },
-    { id: "manzanillo", x: 128, y: 286, anchor: "start", dx: 12, dy: 4 },
+    { id: "colombiaNl", x: 564.4, y: 219.8, anchor: "end", dx: -14, dy: 6 },
+    { id: "altamira", x: 631.2, y: 403.3, anchor: "start", dx: 14, dy: 6 },
+    { id: "veracruz", x: 690.6, y: 513.6, anchor: "start", dx: 14, dy: 6 },
+    { id: "manzanillo", x: 424.2, y: 521.1, anchor: "end", dx: -14, dy: 6 },
 ];
 
+const NodeLabel = ({ node, label, fill }) => (
+    <text
+        x={node.x + node.dx}
+        y={node.y + node.dy}
+        textAnchor={node.anchor}
+        fontSize="19"
+        letterSpacing="2"
+        fontWeight="500"
+        className={`hidden md:block ${fill}`}
+    >
+        {label.toUpperCase()}
+    </text>
+);
+
 const OperationNode = ({ node, label }) => (
-    <g>
-        <circle cx={node.x} cy={node.y} r={11} className="fill-[var(--gold)] opacity-20" />
-        <circle cx={node.x} cy={node.y} r={4.5} className="fill-[var(--gold)]" />
-        <text
-            x={node.x + node.dx}
-            y={node.y + node.dy}
-            textAnchor={node.anchor}
-            fontSize="10"
-            letterSpacing="1.5"
-            fontWeight="500"
-            className="fill-[rgba(255,255,255,0.78)]"
-        >
-            {label.toUpperCase()}
-        </text>
+    <g className="group">
+        <circle
+            cx={node.x}
+            cy={node.y}
+            r={14}
+            className="fill-[var(--gold)] opacity-20 transition-opacity duration-300 group-hover:opacity-45"
+        />
+        <circle cx={node.x} cy={node.y} r={7} className="fill-[var(--gold)]" />
+        <NodeLabel node={node} label={label} fill="fill-[rgba(255,255,255,0.78)]" />
     </g>
 );
 
 const CorrespondentNode = ({ node, label }) => (
-    <g>
-        <circle cx={node.x} cy={node.y} r={11} className="fill-[var(--maritime)] opacity-25" />
+    <g className="group">
         <circle
             cx={node.x}
             cy={node.y}
-            r={4.5}
+            r={14}
+            className="fill-[var(--maritime)] opacity-25 transition-opacity duration-300 group-hover:opacity-50"
+        />
+        <circle
+            cx={node.x}
+            cy={node.y}
+            r={7}
             className="fill-[var(--navy-deepest)] stroke-[var(--navy-fixed)]"
             strokeWidth={1.5}
         />
-        <text
-            x={node.x + node.dx}
-            y={node.y + node.dy}
-            textAnchor={node.anchor}
-            fontSize="10"
-            letterSpacing="1.5"
-            fontWeight="500"
-            className="fill-[rgba(255,255,255,0.62)]"
-        >
-            {label.toUpperCase()}
-        </text>
+        <NodeLabel node={node} label={label} fill="fill-[rgba(255,255,255,0.62)]" />
     </g>
 );
 
@@ -165,13 +169,13 @@ export const Coverage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-12 gap-6 lg:gap-8">
-                    {/* Esquema territorial (solo tablet/desktop) */}
+                    {/* Mapa de México con sedes (tableta/escritorio) */}
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="hidden md:flex md:col-span-7 flex-col border border-white/10 bg-white/[0.03] p-6 lg:p-8"
+                        className="flex md:col-span-7 flex-col border border-white/10 bg-white/[0.03] p-6 lg:p-8"
                     >
                         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                             <span className="label-caps text-white/40">
@@ -189,16 +193,14 @@ export const Coverage = () => {
                             </div>
                         </div>
 
-                        <div
-                            className="relative flex-1 flex items-center"
-                            style={{
-                                backgroundImage:
-                                    "radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px)",
-                                backgroundSize: "22px 22px",
-                            }}
-                            aria-hidden="true"
-                        >
-                            <svg viewBox="0 0 480 340" className="w-full h-auto">
+                        <div className="relative flex-1 flex items-center" aria-hidden="true">
+                            <svg viewBox={MEXICO_VIEWBOX} className="w-full h-auto">
+                                <path
+                                    d={MEXICO_PATH}
+                                    className="fill-[var(--navy-elevated)] stroke-[rgba(255,255,255,0.16)]"
+                                    strokeWidth="1.5"
+                                    strokeLinejoin="round"
+                                />
                                 {OPERATION.map((node) => (
                                     <OperationNode
                                         key={node.id}
