@@ -42,40 +42,6 @@ export const Hero = () => {
                     }}
                 />
 
-                {/* Degradado para que el texto se lea sobre la foto (claro / oscuro) */}
-                <div
-                    className="absolute inset-0 pointer-events-none md:hidden dark:hidden"
-                    style={{
-                        background:
-                            "linear-gradient(to top, rgba(248,245,238,0.96) 0%, rgba(248,245,238,0.85) 45%, rgba(248,245,238,0.15) 80%, rgba(248,245,238,0) 100%)",
-                    }}
-                    aria-hidden="true"
-                />
-                <div
-                    className="absolute inset-0 pointer-events-none hidden md:block dark:hidden"
-                    style={{
-                        background:
-                            "linear-gradient(to right, rgba(248,245,238,0.94) 0%, rgba(248,245,238,0.8) 38%, rgba(248,245,238,0) 65%)",
-                    }}
-                    aria-hidden="true"
-                />
-                <div
-                    className="absolute inset-0 pointer-events-none hidden dark:block md:dark:hidden"
-                    style={{
-                        background:
-                            "linear-gradient(to top, rgba(6,21,34,0.95) 0%, rgba(6,21,34,0.8) 45%, rgba(6,21,34,0.25) 80%, rgba(6,21,34,0.1) 100%)",
-                    }}
-                    aria-hidden="true"
-                />
-                <div
-                    className="absolute inset-0 pointer-events-none hidden md:dark:block"
-                    style={{
-                        background:
-                            "linear-gradient(to right, rgba(6,21,34,0.92) 0%, rgba(6,21,34,0.75) 38%, rgba(6,21,34,0) 65%)",
-                    }}
-                    aria-hidden="true"
-                />
-
                 {/* Luces ámbar — solo en tema oscuro, aparecen al hover */}
                 <div
                     className={`
@@ -119,7 +85,14 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-2xl"
+                    className="
+                        max-w-3xl
+                        -mx-2 md:mx-0 p-5 md:p-8
+                        bg-white/40 dark:bg-[#061522]/45
+                        backdrop-blur-md
+                        border border-white/40 dark:border-white/10
+                        shadow-[0_8px_32px_-12px_rgba(0,0,0,0.25)]
+                    "
                 >
                     {/* Eyebrow con línea dorada */}
                     <div className="flex items-center gap-4 mb-7 border-l-2 border-[var(--gold)] pl-4">
