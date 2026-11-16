@@ -34,7 +34,7 @@ export const ContactPreview = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.7 }}
                         >
-                            <span className="label-caps text-[var(--gold)] flex items-center gap-3 mb-5">
+                            <span className="label-caps text-[var(--gold-text)] flex items-center gap-3 mb-5">
                                 <span className="block w-8 h-px bg-[var(--gold)]" />
                                 {t("contact.eyebrow")}
                             </span>

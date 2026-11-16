@@ -57,7 +57,7 @@ export const ConsentNote = () => {
     return (
         <p className="text-xs text-[var(--ink-muted)] leading-relaxed max-w-sm">
             {t("contactPage.form.consent")}{" "}
-            <Link to="/aviso-de-privacidad" className="underline hover:text-[var(--gold)]">
+            <Link to="/aviso-de-privacidad" className="underline hover:text-[var(--gold-text)]">
                 {t("contactPage.form.privacyLink")}
             </Link>
             .

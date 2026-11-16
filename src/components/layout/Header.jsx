@@ -32,9 +32,9 @@ export const Header = () => {
     }, []);
 
     const linkClass = ({ isActive }) =>
-        `relative text-[11px] tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${
+        `relative text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${
             isActive
-                ? "text-[var(--gold)]"
+                ? "text-[var(--gold-text)]"
                 : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
         }`;
 
@@ -83,7 +83,7 @@ export const Header = () => {
                                 hover:bg-[var(--gold-dark)]
                                 text-[var(--navy-deepest)]
                                 px-5 h-10
-                                text-[10px] tracking-[0.22em] uppercase font-medium
+                                text-xs tracking-[0.22em] uppercase font-medium
                                 transition-all duration-300 ease-editorial
                                 border border-[var(--gold)]
                             "
@@ -139,7 +139,7 @@ export const Header = () => {
                                     className={({ isActive }) =>
                                         `flex items-center justify-between py-3 border-b border-[var(--line-soft)]
                                          text-[var(--ink)] dark:text-white
-                                         ${isActive ? "text-[var(--gold)]" : ""}`
+                                         ${isActive ? "text-[var(--gold-text)]" : ""}`
                                     }
                                 >
                                     <span className="text-sm tracking-[0.22em] uppercase font-medium">
@@ -156,7 +156,7 @@ export const Header = () => {
                                     bg-[var(--gold)] hover:bg-[var(--gold-dark)]
                                     text-[var(--navy-deepest)]
                                     px-5 h-12
-                                    text-[11px] tracking-[0.22em] uppercase font-medium
+                                    text-xs tracking-[0.22em] uppercase font-medium
                                 "
                             >
                                 {t("nav.contact")}
@@ -241,7 +241,7 @@ const BottomLink = ({ to, label, icon }) => (
                     }`}
                 />
                 {ICONS[icon]}
-                <span className="text-[9px] tracking-[0.18em] uppercase">{label}</span>
+                <span className="text-xs tracking-[0.18em] uppercase">{label}</span>
             </>
         )}
     </NavLink>

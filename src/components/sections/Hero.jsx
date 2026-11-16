@@ -42,6 +42,40 @@ export const Hero = () => {
                     }}
                 />
 
+                {/* Degradado para que el texto se lea sobre la foto (claro / oscuro) */}
+                <div
+                    className="absolute inset-0 pointer-events-none md:hidden dark:hidden"
+                    style={{
+                        background:
+                            "linear-gradient(to top, rgba(248,245,238,0.96) 0%, rgba(248,245,238,0.85) 45%, rgba(248,245,238,0.15) 80%, rgba(248,245,238,0) 100%)",
+                    }}
+                    aria-hidden="true"
+                />
+                <div
+                    className="absolute inset-0 pointer-events-none hidden md:block dark:hidden"
+                    style={{
+                        background:
+                            "linear-gradient(to right, rgba(248,245,238,0.94) 0%, rgba(248,245,238,0.8) 38%, rgba(248,245,238,0) 65%)",
+                    }}
+                    aria-hidden="true"
+                />
+                <div
+                    className="absolute inset-0 pointer-events-none hidden dark:block md:dark:hidden"
+                    style={{
+                        background:
+                            "linear-gradient(to top, rgba(6,21,34,0.95) 0%, rgba(6,21,34,0.8) 45%, rgba(6,21,34,0.25) 80%, rgba(6,21,34,0.1) 100%)",
+                    }}
+                    aria-hidden="true"
+                />
+                <div
+                    className="absolute inset-0 pointer-events-none hidden md:dark:block"
+                    style={{
+                        background:
+                            "linear-gradient(to right, rgba(6,21,34,0.92) 0%, rgba(6,21,34,0.75) 38%, rgba(6,21,34,0) 65%)",
+                    }}
+                    aria-hidden="true"
+                />
+
                 {/* Luces ámbar — solo en tema oscuro, aparecen al hover */}
                 <div
                     className={`
@@ -89,7 +123,7 @@ export const Hero = () => {
                 >
                     {/* Eyebrow con línea dorada */}
                     <div className="flex items-center gap-4 mb-7 border-l-2 border-[var(--gold)] pl-4">
-                        <span className="label-caps text-[var(--gold)]">{t("hero.eyebrow")}</span>
+                        <span className="label-caps text-[var(--gold-text)]">{t("hero.eyebrow")}</span>
                     </div>
 
                     <h1 className="
@@ -123,7 +157,7 @@ export const Hero = () => {
                                 bg-[var(--gold)] hover:bg-[var(--gold-dark)]
                                 text-[var(--navy-deepest)]
                                 px-7 h-12
-                                text-[11px] font-medium tracking-[0.22em] uppercase
+                                text-xs font-medium tracking-[0.22em] uppercase
                                 transition-all duration-300 ease-editorial
                                 border border-transparent
                                 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)]
@@ -137,17 +171,17 @@ export const Hero = () => {
                             to="/servicios"
                             className="
                                 inline-flex items-center justify-center gap-2
-                                bg-[var(--paper)]/90
+                                bg-white/60
                                 dark:bg-transparent
                                 text-[var(--ink)]
                                 dark:text-white
-                                border border-[var(--ink)]/30
+                                border border-black/25
                                 dark:border-white/30
                                 hover:border-[var(--gold)]
-                                hover:text-[var(--gold)]
+                                hover:text-[var(--gold-text)]
                                 backdrop-blur-sm
                                 px-7 h-12
-                                text-[11px] font-medium tracking-[0.22em] uppercase
+                                text-xs font-medium tracking-[0.22em] uppercase
                                 transition-all duration-300 ease-editorial
                             "
                         >

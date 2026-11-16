@@ -51,7 +51,7 @@ export const Contact = () => {
                         className="md:col-span-5 space-y-8"
                     >
                         <div>
-                            <span className="label-caps text-[var(--gold)] flex items-center gap-3 mb-4">
+                            <span className="label-caps text-[var(--gold-text)] flex items-center gap-3 mb-4">
                                 <span className="block w-8 h-px bg-[var(--gold)]" />
                                 {t("contactPage.info.eyebrow")}
                             </span>
@@ -69,7 +69,7 @@ export const Contact = () => {
                                     key={title}
                                     className="flex items-start gap-4 pb-5 border-b border-[var(--line-soft)]"
                                 >
-                                    <div className="w-11 h-11 border border-[var(--gold)]/40 flex items-center justify-center text-[var(--gold)] shrink-0">
+                                    <div className="w-11 h-11 border border-[var(--gold)]/40 flex items-center justify-center text-[var(--gold-text)] shrink-0">
                                         <Icon className="w-5 h-5" strokeWidth={1.5} />
                                     </div>
                                     <div>
@@ -87,7 +87,7 @@ export const Contact = () => {
 
                         {/* Schedule */}
                         <div className="bg-[var(--paper-warm)] border border-[var(--line-soft)] p-6">
-                            <h3 className="label-caps text-[var(--gold)] mb-4">
+                            <h3 className="label-caps text-[var(--gold-text)] mb-4">
                                 {t("contactPage.schedule.title")}
                             </h3>
                             <div className="space-y-3 text-sm text-[var(--ink-soft)]">
@@ -122,7 +122,7 @@ export const Contact = () => {
                         onSubmit={handleSubmit}
                         className="relative md:col-span-7 bg-[var(--paper-warm)] border border-[var(--line-soft)] p-7 md:p-10 space-y-7"
                     >
-                        <span className="label-caps text-[var(--gold)] block mb-2">
+                        <span className="label-caps text-[var(--gold-text)] block mb-2">
                             {t("contactPage.form.title")}
                         </span>
 

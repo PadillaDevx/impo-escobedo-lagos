@@ -6,15 +6,15 @@ const variantClasses = {
     gold:
         "bg-[var(--gold)] text-[var(--navy-deep)] border border-[var(--gold)] hover:bg-[var(--gold-dark)] hover:border-[var(--gold-dark)]",
     outline:
-        "bg-transparent text-[var(--ink)] border border-[var(--ink-faint)] hover:border-[var(--gold)] hover:text-[var(--gold)]",
+        "bg-transparent text-[var(--ink)] border border-[var(--ink-faint)] hover:border-[var(--gold)] hover:text-[var(--gold-text)]",
     ghost:
-        "bg-transparent text-[var(--ink)] border-none hover:text-[var(--gold)] px-0",
+        "bg-transparent text-[var(--ink)] border-none hover:text-[var(--gold-text)] px-0",
 };
 
 const sizeClasses = {
-    sm: "text-[10px] py-2.5 px-4",
-    md: "text-[11px] py-3.5 px-5",
-    lg: "text-[11px] py-4 px-7",
+    sm: "text-xs py-2.5 px-4",
+    md: "text-xs py-3.5 px-5",
+    lg: "text-xs py-4 px-7",
 };
 
 export const Button = ({

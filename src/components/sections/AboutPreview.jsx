@@ -65,7 +65,7 @@ export const AboutPreview = () => {
 
                         {/* Caption */}
                         <div className="absolute bottom-5 left-5 right-5 p-4 bg-[var(--navy-deep)]/85 backdrop-blur-md border border-white/10 transition-all duration-500 ease-editorial">
-                            <span className="label-caps text-[10px] text-[var(--gold)] tracking-widest block mb-1">
+                            <span className="label-caps text-xs text-[var(--gold)] tracking-widest block mb-1">
                                 {t("about.imageEyebrow")}
                             </span>
                             <p className="text-xs text-white/70 font-light">
@@ -86,7 +86,7 @@ export const AboutPreview = () => {
                     transition={{ duration: 0.8 }}
                     className="md:col-span-6 space-y-6"
                 >
-                    <span className="label-caps text-[var(--gold)] flex items-center gap-3">
+                    <span className="label-caps text-[var(--gold-text)] flex items-center gap-3">
                         <span className="block w-8 h-px bg-[var(--gold)]" />
                         {t("about.eyebrow")}
                     </span>
@@ -107,7 +107,7 @@ export const AboutPreview = () => {
                     <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-[var(--line-soft)]">
                         {POINTS.map((key) => (
                             <li key={key} className="flex items-start gap-3">
-                                <Check className="w-4 h-4 mt-1 text-[var(--gold)] shrink-0" strokeWidth={2} />
+                                <Check className="w-4 h-4 mt-1 text-[var(--gold-text)] shrink-0" strokeWidth={2} />
                                 <span className="text-[var(--ink)] font-light leading-snug">{t(key)}</span>
                             </li>
                         ))}
@@ -115,7 +115,7 @@ export const AboutPreview = () => {
 
                     <Link
                         to="/nosotros"
-                        className="inline-flex items-center gap-2 label-caps text-[var(--ink)] hover:text-[var(--gold)] link-underline pt-2"
+                        className="inline-flex items-center gap-2 label-caps text-[var(--ink)] hover:text-[var(--gold-text)] link-underline pt-2"
                     >
                         {t("about.cta")}
                         <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />

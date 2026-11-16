@@ -57,11 +57,17 @@ export const Services = () => {
                                 hover:bg-[var(--paper-high)] hover:-translate-y-1
                             `}
                         >
+                            {/* Toda la tarjeta lleva a la página de servicios */}
+                            <Link
+                                to="/servicios"
+                                className="absolute inset-0 z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--gold)]"
+                                aria-label={`${t(titleKey)}: ${t("services.cta")}`}
+                            />
                             <div className="flex items-start justify-between">
                                 <span className="label-caps text-[var(--ink-muted)]">
                                     0{idx + 1}
                                 </span>
-                                <span className="text-[var(--ink)] group-hover:text-[var(--gold)] transition-colors duration-300">
+                                <span className="text-[var(--ink)] group-hover:text-[var(--gold-text)] transition-colors duration-300">
                                     <Icon className="w-7 h-7" strokeWidth={1.5} />
                                 </span>
                             </div>
@@ -76,11 +82,11 @@ export const Services = () => {
                             </div>
 
                             <div className="mt-auto pt-5 border-t border-[var(--line-soft)] flex items-center justify-between">
-                                <span className="label-caps text-[var(--gold)]">
+                                <span className="label-caps text-[var(--gold-text)]">
                                     {t("services.cta").split(" ")[0]}
                                 </span>
                                 <ArrowUpRight
-                                    className="w-4 h-4 text-[var(--ink)] group-hover:text-[var(--gold)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                                    className="w-4 h-4 text-[var(--ink)] group-hover:text-[var(--gold-text)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                                     strokeWidth={1.5}
                                 />
                             </div>
@@ -97,7 +103,7 @@ export const Services = () => {
                 >
                     <Link
                         to="/servicios"
-                        className="inline-flex items-center gap-2 label-caps text-[var(--ink)] hover:text-[var(--gold)] link-underline"
+                        className="inline-flex items-center gap-2 label-caps text-[var(--ink)] hover:text-[var(--gold-text)] link-underline"
                     >
                         {t("services.cta")}
                         <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />

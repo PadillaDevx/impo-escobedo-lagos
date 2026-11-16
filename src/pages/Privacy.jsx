@@ -13,7 +13,7 @@ export const Privacy = () => {
         : `"${BRANDING.name}"`;
     const address = PRIVACY_OWNER.address || `${city}, ${state}, ${country}`;
     const email = (
-        <a href={`mailto:${CONTACT_INFO.email}`} className="underline hover:text-[var(--gold)]">
+        <a href={`mailto:${CONTACT_INFO.email}`} className="underline hover:text-[var(--gold-text)]">
             {CONTACT_INFO.email}
         </a>
     );

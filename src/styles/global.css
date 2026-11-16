@@ -21,6 +21,7 @@
     --ink-faint: #B5B9C0;
     --gold: #B48C45;
     --gold-dark: #8E6E33;
+    --gold-text: #7A5E26; /* dorado para texto sobre fondos claros (contraste AA) */
     --gold-soft: rgba(180, 140, 69, 0.12);
     --navy-deep: #0B2239;
     --navy-deepest: #061522;
@@ -78,6 +79,7 @@
     --ink-faint: rgba(196, 198, 204, 0.28);
     --gold: #D9B775;
     --gold-dark: #C6A15B;
+    --gold-text: #D9B775;
     --gold-soft: rgba(217, 183, 117, 0.15);
     --navy-deep: #1B3050;
     --navy-deepest: #061522;
@@ -146,14 +148,14 @@
 @layer components {
     /* Etiqueta editorial con tracking */
     .label-caps {
-        font-size: 11px;
-        letter-spacing: 0.18em;
+        font-size: 12px;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         font-weight: 500;
     }
 
     .label-gold {
-        color: var(--gold);
+        color: var(--gold-text);
     }
 
     /* Botones */
@@ -230,8 +232,8 @@
     }
 
     .field-label {
-        font-size: 10px;
-        letter-spacing: 0.2em;
+        font-size: 12px;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--ink-soft);
         font-weight: 600;
@@ -287,8 +289,8 @@
 
     /* Número de sección */
     .section-number {
-        font-size: 10px;
-        letter-spacing: 0.2em;
+        font-size: 12px;
+        letter-spacing: 0.12em;
         color: var(--ink-muted);
         font-weight: 500;
     }
@@ -396,6 +398,15 @@
 
 .whatsapp-pulse {
     animation: pulse-ring 2.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-pulse {
+        animation: none;
+    }
+    html {
+        scroll-behavior: auto !important;
+    }
 }
 
 /* Utilidades tipográficas */

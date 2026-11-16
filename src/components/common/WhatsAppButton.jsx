@@ -32,7 +32,7 @@ export const WhatsAppButton = () => {
                         exit={{ opacity: 0, y: 10, scale: 0.96 }}
                         transition={{ duration: 0.2 }}
                         className="
-                            absolute bottom-16 right-0
+                            absolute bottom-14 md:bottom-16 right-0
                             w-72
                             bg-[var(--paper)]
                             border border-[var(--line)]
@@ -44,7 +44,7 @@ export const WhatsAppButton = () => {
                                 <WhatsAppIcon className="w-5 h-5" />
                             </div>
                             <div>
-                                <p className="label-caps text-[10px] text-[#FFD37B]">WhatsApp</p>
+                                <p className="label-caps text-xs text-[#FFD37B]">WhatsApp</p>
                                 <p className="font-medium text-sm leading-tight mt-0.5">{t("whatsapp.tooltip")}</p>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ export const WhatsAppButton = () => {
                 aria-label={t("whatsapp.aria")}
                 aria-expanded={open}
                 className="
-                    relative w-14 h-14
+                    relative w-12 h-12 md:w-14 md:h-14
                     bg-[#25D366] hover:bg-[#1ebe5b]
                     text-white
                     flex items-center justify-center
@@ -92,7 +92,7 @@ export const WhatsAppButton = () => {
                 {open ? (
                     <X className="w-6 h-6" strokeWidth={2} />
                 ) : (
-                    <WhatsAppIcon className="w-8 h-8" />
+                    <WhatsAppIcon className="w-7 h-7 md:w-8 md:h-8" />
                 )}
             </button>
         </div>

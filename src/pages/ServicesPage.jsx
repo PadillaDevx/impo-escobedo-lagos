@@ -74,12 +74,12 @@ export const ServicesPage = () => {
                         >
                             <div className="md:col-span-5">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <span className="label-caps text-[var(--gold)]">
+                                    <span className="label-caps text-[var(--gold-text)]">
                                         0{idx + 1}
                                     </span>
                                     <span className="h-px w-12 bg-[var(--gold)]" />
                                 </div>
-                                <div className="text-[var(--gold)] mb-6">
+                                <div className="text-[var(--gold-text)] mb-6">
                                     <Icon className="w-12 h-12" strokeWidth={1.2} />
                                 </div>
                                 <h2 className="text-2xl md:text-3xl font-light tracking-tight leading-tight text-[var(--ink)] text-balance">
@@ -115,7 +115,7 @@ export const ServicesPage = () => {
                         transition={{ duration: 0.6 }}
                         className="flex items-start gap-5 border-l-2 border-[var(--gold)] bg-[var(--paper-warm)] p-6 md:p-8"
                     >
-                        <Info className="w-6 h-6 text-[var(--gold)] shrink-0 mt-0.5" strokeWidth={1.5} />
+                        <Info className="w-6 h-6 text-[var(--gold-text)] shrink-0 mt-0.5" strokeWidth={1.5} />
                         <div>
                             <h3 className="label-caps text-[var(--ink)] mb-2">
                                 {t("servicesPage.scope.title")}
@@ -143,7 +143,7 @@ export const ServicesPage = () => {
                     <div className="text-center mb-14">
                         <span
                             className="
-                                label-caps text-[var(--gold)]
+                                label-caps text-[var(--gold-text)]
                                 flex items-center justify-center gap-3 mb-4
                             "
                         >
@@ -181,7 +181,7 @@ export const ServicesPage = () => {
                                     w-12 h-12
                                     border border-[var(--gold)]/40
                                     flex items-center justify-center mb-6
-                                    text-[var(--gold)]
+                                    text-[var(--gold-text)]
                                     group-hover:bg-[var(--gold)]
                                     group-hover:text-[var(--navy-deep)]
                                     transition-colors
@@ -209,7 +209,7 @@ export const ServicesPage = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
                     >
-                        <span className="label-caps text-[var(--gold)] block mb-5">
+                        <span className="label-caps text-[var(--gold-text)] block mb-5">
                             {t("servicesPage.cta.title")}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-light text-[var(--ink)] tracking-tight leading-tight text-balance mb-6">

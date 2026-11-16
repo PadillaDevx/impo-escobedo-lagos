@@ -105,7 +105,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="
-                    mt-16 pt-8
+                    mt-16 pt-8 md:pr-24
                     border-t border-white/10
                     flex flex-col md:flex-row md:items-center md:justify-between gap-4
                 ">

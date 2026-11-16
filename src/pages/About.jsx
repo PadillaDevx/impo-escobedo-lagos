@@ -42,7 +42,7 @@ export const About = () => {
                         transition={{ duration: 0.7 }}
                         className="md:col-span-5 space-y-4"
                     >
-                        <span className="label-caps text-[var(--gold)] flex items-center gap-3">
+                        <span className="label-caps text-[var(--gold-text)] flex items-center gap-3">
                             <span className="block w-8 h-px bg-[var(--gold)]" />
                             {t("aboutPage.history.eyebrow")}
                         </span>
@@ -64,7 +64,7 @@ export const About = () => {
                         <ul className="pt-8 mt-8 border-t border-[var(--line-soft)] grid sm:grid-cols-2 gap-x-6 gap-y-4 text-base">
                             {POINTS.map((key) => (
                                 <li key={key} className="flex items-start gap-3">
-                                    <Check className="w-4 h-4 mt-1.5 text-[var(--gold)] shrink-0" strokeWidth={2} />
+                                    <Check className="w-4 h-4 mt-1.5 text-[var(--gold-text)] shrink-0" strokeWidth={2} />
                                     <span className="text-[var(--ink)]">{t(key)}</span>
                                 </li>
                             ))}
@@ -93,7 +93,7 @@ export const About = () => {
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
                                 className="bg-[var(--paper)] border border-[var(--line-soft)] p-8 md:p-10 hover:border-[var(--gold)] transition-all duration-300 group"
                             >
-                                <div className="w-12 h-12 border border-[var(--gold)]/40 flex items-center justify-center mb-6 text-[var(--gold)] group-hover:bg-[var(--gold)] group-hover:text-[var(--navy-deep)] transition-colors">
+                                <div className="w-12 h-12 border border-[var(--gold)]/40 flex items-center justify-center mb-6 text-[var(--gold-text)] group-hover:bg-[var(--gold)] group-hover:text-[var(--navy-deep)] transition-colors">
                                     <Icon className="w-6 h-6" strokeWidth={1.5} />
                                 </div>
                                 <h3 className="text-xl font-light text-[var(--ink)] mb-3 tracking-tight">
@@ -131,7 +131,7 @@ const AdvisorProfile = () => {
                     </div>
                 )}
                 <div className={ADVISOR.photo ? "md:col-span-8 space-y-4" : "md:col-span-12 space-y-4"}>
-                    <span className="label-caps text-[var(--gold)] flex items-center gap-3">
+                    <span className="label-caps text-[var(--gold-text)] flex items-center gap-3">
                         <span className="block w-8 h-px bg-[var(--gold)]" />
                         {t("advisor.eyebrow")}
                     </span>

@@ -45,7 +45,7 @@ export const Process = () => {
                 <div className="grid md:grid-cols-12 gap-12 mb-16 md:mb-20">
                     <div className="md:col-span-7">
                         <span className="
-                            label-caps text-[var(--gold)]
+                            label-caps text-[var(--gold-text)]
                             flex items-center gap-3 mb-6
                         ">
                             <span className="block w-8 h-px bg-[var(--gold)]" />
@@ -101,8 +101,8 @@ export const Process = () => {
                                     ">
                                         <span className="
                                             label-caps
-                                            text-[var(--gold)]
-                                            text-[10px]
+                                            text-[var(--gold-text)]
+                                            text-xs
                                         ">
                                             {step.num}
                                         </span>

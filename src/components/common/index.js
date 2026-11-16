@@ -25,7 +25,7 @@ export const PageHero = ({ eyebrow, title, subtitle, align = "left" }) => {
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
                     {eyebrow && (
-                        <span className="label-caps text-[var(--gold)] block mb-5">{eyebrow}</span>
+                        <span className="label-caps text-[var(--gold-text)] block mb-5">{eyebrow}</span>
                     )}
                     {title && (
                         <h1 className="text-4xl md:text-6xl font-light text-[var(--ink)] tracking-tight text-balance leading-[1.05]">
@@ -53,7 +53,7 @@ export const SectionHeading = ({ eyebrow, title, subtitle, align = "left" }) => 
     return (
         <div className={`flex flex-col gap-4 mb-14 ${wrap}`}>
             {eyebrow && (
-                <span className="label-caps text-[var(--gold)] flex items-center gap-3">
+                <span className="label-caps text-[var(--gold-text)] flex items-center gap-3">
                     <span className="block w-8 h-px bg-[var(--gold)]" />
                     {eyebrow}
                 </span>

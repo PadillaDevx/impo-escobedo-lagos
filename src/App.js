@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import { Layout } from "./components/layout/Layout";
 import { Hero } from "./components/sections/Hero";
 import { Metrics } from "./components/sections/Metrics";
@@ -27,6 +28,7 @@ const Home = () => (
 
 function App() {
     return (
+        <MotionConfig reducedMotion="user">
         <Router>
             <Routes>
                 <Route element={<Layout />}>
@@ -40,6 +42,7 @@ function App() {
             </Routes>
             <WhatsAppButton />
         </Router>
+        </MotionConfig>
     );
 }
 
