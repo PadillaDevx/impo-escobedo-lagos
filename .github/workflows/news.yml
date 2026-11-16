@@ -1,0 +1,44 @@
+# Actualiza las noticias desde el Diario Oficial de la Federación (DOF).
+# Corre de lunes a viernes, después de la edición matutina y de la vespertina.
+# Si hay noticias nuevas, hace commit de public/data/news.json y Cloudflare
+# vuelve a publicar el sitio automáticamente.
+name: Noticias DOF
+
+on:
+  schedule:
+    - cron: "30 15 * * 1-5" # 9:30 hora del centro de México
+    - cron: "0 2 * * 2-6"   # 20:00 hora del centro de México (edición vespertina)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Consultar el DOF
+        run: node scripts/fetch-dof-news.mjs --days 10
+
+      - name: Guardar cambios
+        run: |
+          if git diff --quiet -- public/data/news.json; then
+            echo "Sin noticias nuevas."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/news.json
+          git commit -m "chore(news): actualizar noticias del DOF"
+          git push

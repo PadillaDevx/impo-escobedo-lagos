@@ -15,6 +15,7 @@ export const Footer = () => {
     const company = [
         { key: "footer.company.home", path: "/" },
         { key: "footer.company.about", path: "/nosotros" },
+        { key: "footer.company.news", path: "/noticias" },
         { key: "footer.company.contact", path: "/contacto" },
     ];
 

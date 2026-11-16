@@ -264,6 +264,34 @@ const es = {
     // ----- Errores -----
     "error.generic": "Algo salió mal. Inténtelo nuevamente.",
     "error.connection": "Error de conexión con el servidor",
+    // ----- Noticias (DOF) -----
+    "nav.news": "Noticias",
+    "newsHome.title": "Novedades oficiales de comercio exterior",
+    "newsHome.subtitle":
+        "Lo más reciente publicado en el Diario Oficial de la Federación sobre aranceles, aduanas, tratados y comercio exterior.",
+    "newsPage.title": "Noticias de comercio exterior",
+    "newsPage.subtitle":
+        "Publicaciones oficiales del Diario Oficial de la Federación, actualizadas automáticamente todos los días hábiles.",
+    "news.source": "Fuente",
+    "news.view": "Ver publicación",
+    "news.viewAll": "Ver todas las noticias",
+    "news.all": "Todas",
+    "news.filter": "Filtrar por tema",
+    "news.more": "Ver más",
+    "news.loading": "Cargando noticias...",
+    "news.empty": "No hay publicaciones en esta categoría por ahora.",
+    "news.error": "No pudimos cargar las noticias en este momento. Intente más tarde.",
+    "news.updated": "Última actualización",
+    "news.disclaimer":
+        "Títulos tomados textualmente del Diario Oficial de la Federación, con enlace a cada publicación. Para cualquier decisión, consulte siempre el texto oficial completo.",
+    "news.languageNote": "",
+    "news.category.aranceles": "Aranceles y cupos",
+    "news.category.aduanas": "Aduanas",
+    "news.category.tratados": "Tratados comerciales",
+    "news.category.defensa": "Antidumping y cuotas compensatorias",
+    "news.category.comercio": "Comercio exterior",
+    "news.category.normas": "Normas oficiales",
+    "footer.company.news": "Noticias",
 };
 
 const en = {
@@ -521,6 +549,34 @@ const en = {
     // ----- Errors -----
     "error.generic": "Something went wrong. Please try again.",
     "error.connection": "Connection error with the server",
+    // ----- News (DOF) -----
+    "nav.news": "News",
+    "newsHome.title": "Official international trade updates",
+    "newsHome.subtitle":
+        "The latest from Mexico's Official Gazette (DOF) on tariffs, customs, trade agreements and international trade.",
+    "newsPage.title": "International trade news",
+    "newsPage.subtitle":
+        "Official publications from Mexico's Official Gazette (DOF), updated automatically every business day.",
+    "news.source": "Source",
+    "news.view": "View publication",
+    "news.viewAll": "View all news",
+    "news.all": "All",
+    "news.filter": "Filter by topic",
+    "news.more": "Show more",
+    "news.loading": "Loading news...",
+    "news.empty": "No publications in this category yet.",
+    "news.error": "We could not load the news right now. Please try again later.",
+    "news.updated": "Last updated",
+    "news.disclaimer":
+        "Titles are taken verbatim from Mexico's Official Gazette (Diario Oficial de la Federación), with a link to each publication. Always check the full official text before making any decision.",
+    "news.languageNote": "Official publications are in Spanish.",
+    "news.category.aranceles": "Tariffs and quotas",
+    "news.category.aduanas": "Customs",
+    "news.category.tratados": "Trade agreements",
+    "news.category.defensa": "Antidumping and countervailing duties",
+    "news.category.comercio": "International trade",
+    "news.category.normas": "Official standards",
+    "footer.company.news": "News",
 };
 
 export const translations = { es, en };

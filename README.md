@@ -9,6 +9,9 @@ Sitio web de **Impo Escobedo de Lagos**, asesoría en logística y comercio exte
 ```
 ├── src/                    React (Create React App + Tailwind)
 ├── public/                 Estáticos (imágenes optimizadas, manifest)
+├── public/data/news.json   Noticias del DOF (las actualiza la GitHub Action)
+├── scripts/fetch-dof-news.mjs  Lee el DOF y filtra lo de comercio exterior
+├── .github/workflows/news.yml  Corre el script lun-vie (9:30 y 20:00, hora del centro)
 ├── worker/                 Cloudflare Worker: sirve build/ y /api/contact (correo con Resend)
 └── wrangler.jsonc          Configuración del Worker
 ```
@@ -42,6 +45,14 @@ npm run dev:api                  # build + wrangler dev en http://localhost:8788
 ```
 
 Con `npm run dev:api` corriendo, `npm start` también envía `/api/contact` a wrangler (campo `proxy` de `package.json`).
+
+## Noticias automáticas (sin IA, sin base de datos)
+
+- Fuente: servicio web oficial y público del Diario Oficial de la Federación (SIDOF, "Datos abiertos").
+- El script filtra por categoría (aranceles, aduanas, tratados, antidumping, comercio exterior y NOM de Economía) y guarda título, fecha, dependencia y enlace oficial.
+- Solo se republica el título oficial con enlace a la fuente. Los textos oficiales no tienen derechos de autor (LFDA, art. 14, fr. VIII).
+- Si hay noticias nuevas, la Action hace commit de `public/data/news.json` y Cloudflare vuelve a publicar.
+- Para ejecutarlo a mano: `node scripts/fetch-dof-news.mjs --days 10`, o en GitHub → Actions → "Noticias DOF" → Run workflow.
 
 ## Anti-spam del formulario
 

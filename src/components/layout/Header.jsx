@@ -11,6 +11,7 @@ const NAV_ITEMS = [
     { path: "/", key: "nav.home" },
     { path: "/servicios", key: "nav.services" },
     { path: "/nosotros", key: "nav.about" },
+    { path: "/noticias", key: "nav.news" },
 ];
 
 export const Header = () => {
