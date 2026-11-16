@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev:api": "npm run build && npx wrangler pages dev build --port 8788",
+    "dev:api": "npm run build && npx wrangler dev --port 8788",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

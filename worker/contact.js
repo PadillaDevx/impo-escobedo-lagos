@@ -1,10 +1,10 @@
 /**
- * POST /api/contact — Cloudflare Pages Function
+ * POST /api/contact — manejado por el Worker (worker/index.js)
  *
  * Recibe el formulario de contacto y lo envía por correo con Resend.
  *
- * Variables de entorno (Cloudflare Pages → Settings → Variables and Secrets,
- * o archivo .dev.vars en local):
+ * Variables de entorno (Cloudflare → Workers → impo-escobedo-lagos →
+ * Settings → Variables and Secrets, o archivo .dev.vars en local):
  *   RESEND_API_KEY  (secreto)  API key de Resend
  *   CONTACT_TO      correo que recibe las solicitudes
  *   CONTACT_FROM    remitente verificado en Resend, p. ej.
@@ -64,7 +64,7 @@ const sameOrigin = (request) => {
     }
 };
 
-export async function onRequestPost({ request, env }) {
+export async function handleContact(request, env) {
     if (!sameOrigin(request)) return json({ ok: false, code: "forbidden" }, 403);
 
     let body;

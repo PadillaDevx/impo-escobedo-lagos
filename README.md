@@ -9,14 +9,15 @@ Sitio web de **Impo Escobedo de Lagos**, asesoría en logística y comercio exte
 ```
 ├── src/                    React (Create React App + Tailwind)
 ├── public/                 Estáticos (imágenes optimizadas, manifest)
-└── functions/api/contact.js  Cloudflare Pages Function: formulario → correo (Resend)
+├── worker/                 Cloudflare Worker: sirve build/ y /api/contact (correo con Resend)
+└── wrangler.jsonc          Configuración del Worker
 ```
 
-- **Hosting:** Cloudflare Pages, conectado a este repo (`main`). Build: `npm run build`, salida: `build`.
-- Cloudflare detecta la carpeta `functions/` automáticamente y publica `/api/contact` en el mismo dominio (sin CORS, sin servidor aparte).
-- Sin `404.html`, Cloudflare sirve la app como SPA (las rutas como `/nosotros` funcionan al recargar).
+- **Hosting:** Cloudflare Workers (Workers Builds), conectado a este repo (`main`). Cada push compila con `npm run build` y despliega con `wrangler deploy`.
+- `/api/contact` corre en el mismo dominio (sin CORS, sin servidor aparte). El resto lo sirven los assets estáticos con modo SPA, así que rutas como `/nosotros` funcionan al recargar.
+- `keep_vars: true` evita que un despliegue borre las variables configuradas en el panel.
 
-## Variables de entorno (Cloudflare Pages → Settings → Variables and Secrets)
+## Variables de entorno (Cloudflare → Workers → impo-escobedo-lagos → Settings → Variables and Secrets)
 
 | Variable | Tipo | Descripción |
 | --- | --- | --- |
@@ -37,7 +38,7 @@ Para probar el formulario de punta a punta:
 
 ```bash
 cp .dev.vars.example .dev.vars   # y pon tu RESEND_API_KEY
-npm run dev:api                  # build + wrangler en http://localhost:8788
+npm run dev:api                  # build + wrangler dev en http://localhost:8788
 ```
 
 Con `npm run dev:api` corriendo, `npm start` también envía `/api/contact` a wrangler (campo `proxy` de `package.json`).

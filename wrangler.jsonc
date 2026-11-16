@@ -1,0 +1,14 @@
+{
+  // Worker de producción en Cloudflare (Workers Builds, conectado a este repo)
+  "name": "impo-escobedo-lagos",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./build",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  // No borrar las variables configuradas en el panel de Cloudflare al desplegar
+  "keep_vars": true
+}
