@@ -1,0 +1,9 @@
+# Copia este archivo como .dev.vars para probar /api/contact en local con wrangler.
+# En producción estas variables se configuran en Cloudflare Pages:
+#   Settings → Variables and Secrets (RESEND_API_KEY como "Secret").
+
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_TO=juriesco2013@hotmail.com
+# Remitente verificado en Resend. Sin dominio propio usa onboarding@resend.dev,
+# que solo entrega al correo con el que se creó la cuenta de Resend.
+CONTACT_FROM=Impo Escobedo <onboarding@resend.dev>

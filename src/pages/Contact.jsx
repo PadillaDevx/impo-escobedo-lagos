@@ -1,51 +1,17 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/common";
-import { API_URL, CONTACT_INFO, SCHEDULE } from "../config/constants";
+import { HoneypotField, FormStatus, ConsentNote } from "../components/common/FormParts";
+import { CONTACT_INFO, SCHEDULE } from "../config/constants";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useContactForm } from "../utils/useContactForm";
+
+const INITIAL = { name: "", email: "", phone: "", message: "" };
 
 export const Contact = () => {
     const { t } = useLanguage();
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus({ type: "", message: "" });
-        try {
-            const response = await fetch(`${API_URL}/api/contact`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
-            const data = await response.json().catch(() => ({}));
-            if (response.ok && data.success !== false) {
-                setSubmitStatus({ type: "success", message: t("contactPage.success") });
-                setFormData({ name: "", email: "", phone: "", message: "" });
-            } else {
-                setSubmitStatus({
-                    type: "error",
-                    message: data.message || t("contactPage.error"),
-                });
-            }
-        } catch (err) {
-            setSubmitStatus({ type: "error", message: t("contactPage.error") });
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const { form: formData, update, status: submitStatus, loading: isSubmitting, submit: handleSubmit } =
+        useContactForm(INITIAL);
 
     const contactInfo = [
         {
@@ -87,7 +53,7 @@ export const Contact = () => {
                         <div>
                             <span className="label-caps text-[var(--gold)] flex items-center gap-3 mb-4">
                                 <span className="block w-8 h-px bg-[var(--gold)]" />
-                                {t("contactPage.info.title")}
+                                {t("contactPage.info.eyebrow")}
                             </span>
                             <h2 className="text-3xl md:text-4xl font-light text-[var(--ink)] tracking-tight leading-[1.1] text-balance">
                                 {t("contactPage.info.title")}
@@ -154,12 +120,13 @@ export const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1 }}
                         onSubmit={handleSubmit}
-                        className="md:col-span-7 bg-[var(--paper-warm)] border border-[var(--line-soft)] p-7 md:p-10 space-y-7"
+                        className="relative md:col-span-7 bg-[var(--paper-warm)] border border-[var(--line-soft)] p-7 md:p-10 space-y-7"
                     >
                         <span className="label-caps text-[var(--gold)] block mb-2">
                             {t("contactPage.form.title")}
                         </span>
 
+                        <HoneypotField />
                         <div className="grid sm:grid-cols-2 gap-6">
                             <div className="field">
                                 <label htmlFor="name" className="field-label">
@@ -170,7 +137,7 @@ export const Contact = () => {
                                     id="name"
                                     name="name"
                                     value={formData.name}
-                                    onChange={handleChange}
+                                    onChange={update("name")}
                                     required
                                     placeholder="—"
                                     className="field-input"
@@ -185,7 +152,7 @@ export const Contact = () => {
                                     id="phone"
                                     name="phone"
                                     value={formData.phone}
-                                    onChange={handleChange}
+                                    onChange={update("phone")}
                                     placeholder="—"
                                     className="field-input"
                                 />
@@ -201,7 +168,7 @@ export const Contact = () => {
                                 id="email"
                                 name="email"
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={update("email")}
                                 required
                                 placeholder="—"
                                 className="field-input"
@@ -216,30 +183,20 @@ export const Contact = () => {
                                 id="message"
                                 name="message"
                                 value={formData.message}
-                                onChange={handleChange}
+                                onChange={update("message")}
                                 required
                                 rows={5}
+                                minLength={10}
+                                maxLength={2000}
                                 placeholder="—"
                                 className="field-input resize-none"
                             />
                         </div>
 
-                        {submitStatus.message && (
-                            <div
-                                className={`text-sm border-l-2 pl-4 py-3 ${
-                                    submitStatus.type === "success"
-                                        ? "border-[var(--feedback-success)] text-[var(--feedback-successText)] bg-[var(--feedback-successBg)]"
-                                        : "border-[var(--feedback-error)] text-[var(--feedback-errorText)] bg-[var(--feedback-errorBg)]"
-                                }`}
-                            >
-                                {submitStatus.message}
-                            </div>
-                        )}
+                        <FormStatus status={submitStatus} />
 
                         <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                            <p className="text-xs text-[var(--ink-muted)]">
-                                {t("contactPage.form.required")}
-                            </p>
+                            <ConsentNote />
                             <button
                                 type="submit"
                                 disabled={isSubmitting}

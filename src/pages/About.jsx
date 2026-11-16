@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import { Target, Eye, Award } from "lucide-react";
+import { Target, Eye, Award, Check } from "lucide-react";
 import { PageHero, SectionHeading } from "../components/common";
 import { useLanguage } from "../contexts/LanguageContext";
+import { ADVISOR } from "../config/constants";
+
+const POINTS = ["about.point1", "about.point2", "about.point3", "about.point4"];
 
 const VALUES = [
     {
@@ -58,29 +61,19 @@ export const About = () => {
                         <p className="text-pretty">{t("aboutPage.history.body1")}</p>
                         <p className="text-pretty">{t("aboutPage.history.body2")}</p>
 
-                        <div className="pt-8 mt-8 border-t border-[var(--line-soft)]">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                <Value
-                                    value={t("metric.years.value")}
-                                    label={t("metrics.years.label")}
-                                />
-                                <Value
-                                    value={t("metric.routes.value")}
-                                    label={t("metrics.routes.label")}
-                                />
-                                <Value
-                                    value={t("metric.teus.value")}
-                                    label={t("metrics.teus.label")}
-                                />
-                                <Value
-                                    value={t("metric.accuracy.value")}
-                                    label={t("metrics.accuracy.label")}
-                                />
-                            </div>
-                        </div>
+                        <ul className="pt-8 mt-8 border-t border-[var(--line-soft)] grid sm:grid-cols-2 gap-x-6 gap-y-4 text-base">
+                            {POINTS.map((key) => (
+                                <li key={key} className="flex items-start gap-3">
+                                    <Check className="w-4 h-4 mt-1.5 text-[var(--gold)] shrink-0" strokeWidth={2} />
+                                    <span className="text-[var(--ink)]">{t(key)}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </motion.div>
                 </div>
             </section>
+
+            {ADVISOR.name && <AdvisorProfile />}
 
             {/* Valores */}
             <section className="py-24 md:py-32 px-5 md:px-8 bg-[var(--paper-warm)] border-y border-[var(--line-soft)]">
@@ -118,11 +111,46 @@ export const About = () => {
     );
 };
 
-const Value = ({ value, label }) => (
-    <div className="flex flex-col gap-1">
-        <span className="text-3xl md:text-4xl font-light tracking-tight text-[var(--ink)]">
-            {value}
-        </span>
-        <span className="label-caps text-[var(--ink-muted)]">{label}</span>
-    </div>
-);
+// Perfil del asesor: solo se muestra cuando ADVISOR.name tiene valor (config/constants.js)
+const AdvisorProfile = () => {
+    const { t, lang } = useLanguage();
+    const title = ADVISOR.title?.[lang] || ADVISOR.title?.es;
+    const bio = ADVISOR.bio?.[lang] || ADVISOR.bio?.es;
+
+    return (
+        <section className="pb-24 md:pb-32 px-5 md:px-8">
+            <div className="max-w-[1100px] mx-auto grid md:grid-cols-12 gap-10 items-center border-t border-[var(--line-soft)] pt-16">
+                {ADVISOR.photo && (
+                    <div className="md:col-span-4">
+                        <img
+                            src={`${process.env.PUBLIC_URL}${ADVISOR.photo}`}
+                            alt={ADVISOR.name}
+                            className="w-full aspect-[4/5] object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                )}
+                <div className={ADVISOR.photo ? "md:col-span-8 space-y-4" : "md:col-span-12 space-y-4"}>
+                    <span className="label-caps text-[var(--gold)] flex items-center gap-3">
+                        <span className="block w-8 h-px bg-[var(--gold)]" />
+                        {t("advisor.eyebrow")}
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-light tracking-tight text-[var(--ink)]">
+                        {ADVISOR.name}
+                    </h2>
+                    {title && <p className="text-[var(--ink-soft)]">{title}</p>}
+                    {ADVISOR.license && (
+                        <p className="label-caps text-[var(--ink-muted)]">
+                            {t("advisor.license")}: {ADVISOR.license}
+                        </p>
+                    )}
+                    {bio && (
+                        <p className="text-[var(--ink-soft)] font-light leading-relaxed text-pretty">
+                            {bio}
+                        </p>
+                    )}
+                </div>
+            </div>
+        </section>
+    );
+};

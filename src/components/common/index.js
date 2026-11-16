@@ -1,37 +1,8 @@
 import { motion } from "framer-motion";
-import { AlertCircle } from "lucide-react";
-import { useLanguage } from "../../contexts/LanguageContext";
 
 export { Button } from "./Button";
 export { Card } from "./Card";
 export { BrandMark } from "./BrandMark";
-
-export const LoadingSpinner = ({ message }) => {
-    const { t } = useLanguage();
-    return (
-        <div className="text-center py-16">
-            <div className="inline-block w-12 h-12 border border-[var(--ink-faint)] border-t-[var(--gold)] rounded-full animate-spin"></div>
-            <p className="mt-5 label-caps text-[var(--ink-muted)]">
-                {message || t("blogPage.loading")}
-            </p>
-        </div>
-    );
-};
-
-export const ErrorMessage = ({ message, children }) => {
-    const { t } = useLanguage();
-    return (
-        <div className="max-w-md mx-auto border-l-2 border-[var(--feedback-error)] bg-[var(--feedback-errorBg)] p-6">
-            <div className="flex items-center mb-3 text-[var(--feedback-errorText)]">
-                <AlertCircle className="h-5 w-5 mr-3 shrink-0" strokeWidth={1.5} />
-                <h3 className="text-sm font-semibold tracking-wider uppercase">
-                    {message || t("error.generic")}
-                </h3>
-            </div>
-            {children}
-        </div>
-    );
-};
 
 export const PageHero = ({ eyebrow, title, subtitle, align = "left" }) => {
     const alignClass =

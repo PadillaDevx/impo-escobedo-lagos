@@ -1,59 +1,23 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
-import { API_URL } from "../../config/constants";
+import { CONTACT_INFO } from "../../config/constants";
+import { useContactForm } from "../../utils/useContactForm";
+import { HoneypotField, FormStatus, ConsentNote } from "../common/FormParts";
 
 const INITIAL = {
     name: "",
     company: "",
     email: "",
-    interest: "shipping",
+    interest: "import",
     message: "",
 };
 
+const INTERESTS = ["import", "export", "logistics", "trade", "other"];
+
 export const ContactPreview = () => {
     const { t } = useLanguage();
-    const [form, setForm] = useState(INITIAL);
-    const [status, setStatus] = useState({ type: "", message: "" });
-    const [loading, setLoading] = useState(false);
-
-    const update = (field) => (e) => {
-        setForm((prev) => ({ ...prev, [field]: e.target.value }));
-    };
-
-    const submit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setStatus({ type: "", message: "" });
-        try {
-            const response = await fetch(`${API_URL}/api/contact`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: form.name,
-                    company: form.company,
-                    email: form.email,
-                    interest: form.interest,
-                    message: form.message,
-                }),
-            });
-            const data = await response.json().catch(() => ({}));
-            if (response.ok && data.success !== false) {
-                setStatus({ type: "success", message: t("contactPage.success") });
-                setForm(INITIAL);
-            } else {
-                setStatus({
-                    type: "error",
-                    message: data.message || t("contactPage.error"),
-                });
-            }
-        } catch (err) {
-            setStatus({ type: "error", message: t("contactPage.error") });
-        } finally {
-            setLoading(false);
-        }
-    };
+    const { form, update, status, loading, submit } = useContactForm(INITIAL);
 
     return (
         <section
@@ -87,18 +51,18 @@ export const ContactPreview = () => {
                                 </p>
                                 <p>
                                     <a
-                                        href="mailto:juriesco2013@hotmail.com"
+                                        href={`mailto:${CONTACT_INFO.email}`}
                                         className="link-underline text-[var(--ink)]"
                                     >
-                                        juriesco2013@hotmail.com
+                                        {CONTACT_INFO.email}
                                     </a>
                                 </p>
                                 <p>
                                     <a
-                                        href="tel:+523330604534"
+                                        href={CONTACT_INFO.phoneHref}
                                         className="link-underline text-[var(--ink)]"
                                     >
-                                        +52 (333) 060-4534
+                                        {CONTACT_INFO.phone}
                                     </a>
                                 </p>
                             </div>
@@ -112,8 +76,9 @@ export const ContactPreview = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1 }}
                         onSubmit={submit}
-                        className="md:col-span-7 space-y-7 bg-[var(--paper)] p-7 md:p-10 border border-[var(--line-soft)]"
+                        className="relative md:col-span-7 space-y-7 bg-[var(--paper)] p-7 md:p-10 border border-[var(--line-soft)]"
                     >
+                        <HoneypotField />
                         <div className="grid sm:grid-cols-2 gap-6">
                             <div className="field">
                                 <label htmlFor="cp-name" className="field-label">
@@ -170,14 +135,11 @@ export const ContactPreview = () => {
                                     onChange={update("interest")}
                                     className="field-input appearance-none pr-8 cursor-pointer"
                                 >
-                                    <option value="shipping">
-                                        {t("contact.interest.shipping")}
-                                    </option>
-                                    <option value="land">{t("contact.interest.land")}</option>
-                                    <option value="consulting">
-                                        {t("contact.interest.consulting")}
-                                    </option>
-                                    <option value="audit">{t("contact.interest.audit")}</option>
+                                    {INTERESTS.map((key) => (
+                                        <option key={key} value={key}>
+                                            {t(`contact.interest.${key}`)}
+                                        </option>
+                                    ))}
                                 </select>
                                 <ChevronDown
                                     className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--ink-muted)] pointer-events-none"
@@ -195,27 +157,18 @@ export const ContactPreview = () => {
                                 value={form.message}
                                 onChange={update("message")}
                                 rows={3}
+                                required
+                                minLength={10}
+                                maxLength={2000}
                                 placeholder={t("contact.fields.message.placeholder")}
                                 className="field-input resize-none"
                             />
                         </div>
 
-                        {status.message && (
-                            <div
-                                className={`text-sm border-l-2 pl-4 py-2 ${
-                                    status.type === "success"
-                                        ? "border-[var(--feedback-success)] text-[var(--feedback-successText)] bg-[var(--feedback-successBg)]"
-                                        : "border-[var(--feedback-error)] text-[var(--feedback-errorText)] bg-[var(--feedback-errorBg)]"
-                                }`}
-                            >
-                                {status.message}
-                            </div>
-                        )}
+                        <FormStatus status={status} />
 
                         <div className="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                            <p className="text-xs text-[var(--ink-muted)]">
-                                {t("contactPage.form.required")}
-                            </p>
+                            <ConsentNote />
                             <button
                                 type="submit"
                                 disabled={loading}

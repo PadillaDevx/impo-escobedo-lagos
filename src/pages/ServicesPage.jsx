@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Ship, Network, Scale, Globe, FileCheck, Clock, ArrowUpRight } from "lucide-react";
+import { Ship, Network, Scale, UserRound, FileCheck, MessageSquareText, Info, ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/common";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -44,9 +44,9 @@ const SERVICES = [
 ];
 
 const BENEFITS = [
-    { key: "servicesPage.benefit.coverage", Icon: Globe },
-    { key: "servicesPage.benefit.legal", Icon: FileCheck },
-    { key: "servicesPage.benefit.delivery", Icon: Clock },
+    { key: "servicesPage.benefit.personal", Icon: UserRound },
+    { key: "servicesPage.benefit.compliance", Icon: FileCheck },
+    { key: "servicesPage.benefit.clarity", Icon: MessageSquareText },
 ];
 
 export const ServicesPage = () => {
@@ -106,6 +106,25 @@ export const ServicesPage = () => {
                             </div>
                         </motion.article>
                     ))}
+
+                    {/* Alcance: somos asesoría, no agencia aduanal */}
+                    <motion.aside
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="flex items-start gap-5 border-l-2 border-[var(--gold)] bg-[var(--paper-warm)] p-6 md:p-8"
+                    >
+                        <Info className="w-6 h-6 text-[var(--gold)] shrink-0 mt-0.5" strokeWidth={1.5} />
+                        <div>
+                            <h3 className="label-caps text-[var(--ink)] mb-2">
+                                {t("servicesPage.scope.title")}
+                            </h3>
+                            <p className="text-[var(--ink-soft)] font-light leading-relaxed text-pretty">
+                                {t("servicesPage.scope.text")}
+                            </p>
+                        </div>
+                    </motion.aside>
                 </div>
             </section>
 

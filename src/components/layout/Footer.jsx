@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Linkedin } from "lucide-react";
+import { MessageCircle, Phone, Mail } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { CONTACT_INFO, whatsappLink } from "../../config/constants";
 
 export const Footer = () => {
     const { t } = useLanguage();
@@ -8,12 +9,12 @@ export const Footer = () => {
 
     const services = [
         { key: "footer.services.import", path: "/servicios" },
-        { key: "footer.services.export", path: "/servicios" },
         { key: "footer.services.logistics", path: "/servicios" },
+        { key: "footer.services.trade", path: "/servicios" },
     ];
     const company = [
+        { key: "footer.company.home", path: "/" },
         { key: "footer.company.about", path: "/nosotros" },
-        { key: "footer.company.news", path: "/blog" },
         { key: "footer.company.contact", path: "/contacto" },
     ];
 
@@ -82,41 +83,22 @@ export const Footer = () => {
                     <div className="md:col-span-3">
                         <FooterCol title={t("footer.connect")}>
                             <ul className="space-y-3 text-sm">
-                                <li>
-                                    <a
-                                        href="https://www.linkedin.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="
-                                            inline-flex items-center gap-2
-                                            text-white/70 hover:text-[var(--gold)]
-                                            transition-colors
-                                        "
-                                    >
-                                        <Linkedin className="w-4 h-4" strokeWidth={1.5} />
-                                        {t("footer.linkedin")}
-                                    </a>
-                                </li>
-                                <li>
-                                    <Link
-                                        to="/contacto"
-                                        className="
-                                            inline-flex items-center gap-2
-                                            text-white/70 hover:text-[var(--gold)]
-                                            transition-colors group
-                                        "
-                                    >
-                                        {t("footer.company.contact")}
-                                        <ArrowUpRight
-                                            className="
-                                                w-3.5 h-3.5
-                                                transition-transform
-                                                group-hover:translate-x-0.5 group-hover:-translate-y-0.5
-                                            "
-                                            strokeWidth={1.5}
-                                        />
-                                    </Link>
-                                </li>
+                                {[
+                                    { href: whatsappLink(t("whatsapp.message")), label: t("footer.whatsapp"), Icon: MessageCircle, external: true },
+                                    { href: CONTACT_INFO.phoneHref, label: CONTACT_INFO.phone, Icon: Phone },
+                                    { href: `mailto:${CONTACT_INFO.email}`, label: CONTACT_INFO.email, Icon: Mail },
+                                ].map(({ href, label, Icon, external }) => (
+                                    <li key={href}>
+                                        <a
+                                            href={href}
+                                            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                            className="inline-flex items-center gap-2 text-white/70 hover:text-[var(--gold)] transition-colors break-all"
+                                        >
+                                            <Icon className="w-4 h-4 shrink-0" strokeWidth={1.5} />
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </FooterCol>
                     </div>
@@ -130,13 +112,11 @@ export const Footer = () => {
                     <div className="text-xs text-white/50 tracking-wider">
                         © {year} {t("footer.copyright")}. {t("footer.rights")}
                     </div>
-                    <div className="flex items-center gap-5 text-xs text-white/40">
-                        <Link to="#" className="hover:text-[var(--gold)] transition-colors">
-                            {t("footer.privacy")}
-                        </Link>
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/40">
+                        <span>{t("footer.disclaimer")}</span>
                         <span className="opacity-30">·</span>
-                        <Link to="#" className="hover:text-[var(--gold)] transition-colors">
-                            {t("footer.terms")}
+                        <Link to="/aviso-de-privacidad" className="hover:text-[var(--gold)] transition-colors">
+                            {t("footer.privacy")}
                         </Link>
                     </div>
                 </div>
@@ -158,7 +138,7 @@ const FooterBrand = () => {
         <div className="flex items-center gap-3">
             <div className="relative shrink-0 w-10 h-10 overflow-hidden rounded-full ring-1 ring-[var(--gold)]/60">
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/delfin2.png`}
+                    src={`${process.env.PUBLIC_URL}/images/logo.png`}
                     alt=""
                     className="w-full h-full object-cover"
                     onError={(e) => {

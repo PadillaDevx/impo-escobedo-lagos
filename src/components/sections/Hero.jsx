@@ -8,7 +8,7 @@ export const Hero = () => {
     const { t } = useLanguage();
     const [lightsOn, setLightsOn] = useState(false);
 
-    const heroImage = `${process.env.PUBLIC_URL}/images/image.png`;
+    const heroImage = `${process.env.PUBLIC_URL}/images/hero.jpg`;
 
     return (
         <section
@@ -33,7 +33,7 @@ export const Hero = () => {
                 <img
                     key={heroImage}
                     src={heroImage}
-                    alt="Puerto logístico con contenedores"
+                    alt=""
                     className="w-full h-full object-cover object-top"
                     loading="eager"
                     decoding="async"

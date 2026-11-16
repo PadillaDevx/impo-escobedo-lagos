@@ -9,7 +9,7 @@ export const BrandMark = ({ className = "" }) => {
                 aria-hidden="true"
             >
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/delfin2.png`}
+                    src={`${process.env.PUBLIC_URL}/images/logo.png`}
                     alt=""
                     className="w-full h-full object-cover"
                     onError={(e) => {

@@ -2,10 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { whatsappLink } from "../../config/constants";
 
-const PHONE = "523330604534";
-const MSG_ES = "Hola, me gustaría recibir asesoría sobre sus servicios de logística y comercio internacional.";
-const MSG_EN = "Hello, I would like to receive advisory on your logistics and international trade services.";
 
 // Icono oficial de WhatsApp (path oficial del logo)
 const WhatsAppIcon = ({ className = "w-7 h-7" }) => (
@@ -21,9 +19,8 @@ const WhatsAppIcon = ({ className = "w-7 h-7" }) => (
 
 export const WhatsAppButton = () => {
     const [open, setOpen] = useState(false);
-    const { t, lang } = useLanguage();
-    const text = encodeURIComponent(lang === "en" ? MSG_EN : MSG_ES);
-    const href = `https://wa.me/${PHONE}?text=${text}`;
+    const { t } = useLanguage();
+    const href = whatsappLink(t("whatsapp.message"));
 
     return (
         <div className="fixed bottom-24 right-5 md:bottom-8 md:right-8 z-40">
@@ -53,9 +50,7 @@ export const WhatsAppButton = () => {
                         </div>
                         <div className="p-5 space-y-3">
                             <p className="text-sm text-[var(--ink-soft)] leading-relaxed">
-                                {lang === "en"
-                                    ? "We typically respond within minutes during business hours."
-                                    : "Respondemos en minutos dentro del horario laboral."}
+                                {t("whatsapp.note")}
                             </p>
                             <a
                                 href={href}
@@ -70,7 +65,7 @@ export const WhatsAppButton = () => {
                                 "
                             >
                                 <WhatsAppIcon className="w-4 h-4" />
-                                {lang === "en" ? "Open chat" : "Abrir chat"}
+                                {t("whatsapp.open")}
                             </a>
                         </div>
                     </motion.div>

@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 const METRICS = [
-    { valueKey: "metric.years.value", labelKey: "metrics.years.label" },
-    { valueKey: "metric.teus.value", labelKey: "metrics.teus.label" },
-    { valueKey: "metric.routes.value", labelKey: "metrics.routes.label" },
-    { valueKey: "metric.accuracy.value", labelKey: "metrics.accuracy.label" },
+    { valueKey: "highlight.direct.value", labelKey: "highlight.direct.label" },
+    { valueKey: "highlight.remote.value", labelKey: "highlight.remote.label" },
+    { valueKey: "highlight.response.value", labelKey: "highlight.response.label" },
+    { valueKey: "highlight.base.value", labelKey: "highlight.base.label" },
 ];
 
 export const Metrics = () => {
@@ -28,7 +28,7 @@ export const Metrics = () => {
                                 i < METRICS.length - 1 ? "lg:border-r lg:border-[var(--line-soft)] lg:pr-6" : ""
                             } ${i % 2 === 0 ? "md:border-r md:border-[var(--line-soft)] md:pr-6" : ""} lg:[&:nth-child(n)]:border-r-0 lg:[&:not(:last-child)]:border-r`}
                         >
-                            <span className="text-4xl md:text-5xl font-light text-[var(--ink)] tracking-tight">
+                            <span className="text-3xl md:text-4xl font-light text-[var(--ink)] tracking-tight">
                                 {t(metric.valueKey)}
                             </span>
                             <span className="label-caps text-[var(--ink-muted)]">

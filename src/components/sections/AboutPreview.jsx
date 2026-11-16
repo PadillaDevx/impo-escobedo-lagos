@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useTheme } from "../../contexts/ThemeContext";
 
-const STATS = [
-    { valueKey: "about.stat1.value", labelKey: "about.stat1.label" },
-    { valueKey: "about.stat2.value", labelKey: "about.stat2.label" },
-    { valueKey: "about.stat3.value", labelKey: "about.stat3.label" },
-    { valueKey: "about.stat4.value", labelKey: "about.stat4.label" },
-];
+const POINTS = ["about.point1", "about.point2", "about.point3", "about.point4"];
 
 export const AboutPreview = () => {
     const { t } = useLanguage();
@@ -45,7 +40,7 @@ export const AboutPreview = () => {
                         <img
                             key={aboutImage}
                             src={aboutImage}
-                            alt="Puerto logístico"
+                            alt=""
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-editorial group-hover:scale-105 filter brightness-75 contrast-110"
                             onError={(e) => {
                                 e.currentTarget.style.display = "none";
@@ -108,19 +103,15 @@ export const AboutPreview = () => {
                         {t("about.body")}
                     </p>
 
-                    {/* Mini stats */}
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-8 pt-6 border-t border-[var(--line-soft)]">
-                        {STATS.map((s) => (
-                            <div key={s.labelKey} className="flex flex-col gap-1">
-                                <span className="text-3xl font-light text-[var(--ink)] tracking-tight">
-                                    {t(s.valueKey)}
-                                </span>
-                                <span className="label-caps text-[var(--ink-muted)]">
-                                    {t(s.labelKey)}
-                                </span>
-                            </div>
+                    {/* Principios */}
+                    <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-[var(--line-soft)]">
+                        {POINTS.map((key) => (
+                            <li key={key} className="flex items-start gap-3">
+                                <Check className="w-4 h-4 mt-1 text-[var(--gold)] shrink-0" strokeWidth={2} />
+                                <span className="text-[var(--ink)] font-light leading-snug">{t(key)}</span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
 
                     <Link
                         to="/nosotros"
