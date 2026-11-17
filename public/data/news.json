@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-16T20:27:18.216Z",
+  "updatedAt": "2026-11-17T09:50:06.651Z",
   "items": [
+    {
+      "id": "dof-5803859",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-17",
+      "edition": "Matutina",
+      "agency": "Secretaría de Agricultura y Desarrollo Rural",
+      "category": "comercio",
+      "title": "Acuerdo por el que se declara al territorio de los Estados Unidos Mexicanos como zona libre de la necrosis hematopoyética epizoótica en la trucha de cultivo.",
+      "url": "https://sidof.segob.gob.mx/notas/5803859"
+    },
+    {
+      "id": "dof-5803860",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-17",
+      "edition": "Matutina",
+      "agency": "Secretaría de Agricultura y Desarrollo Rural",
+      "category": "comercio",
+      "title": "Acuerdo por el que se declara al territorio de los Estados Unidos Mexicanos como zona libre de herpesvirus de la carpa koi en la carpa común.",
+      "url": "https://sidof.segob.gob.mx/notas/5803860"
+    },
+    {
+      "id": "dof-5803862",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-17",
+      "edition": "Matutina",
+      "agency": "Secretaría de Agricultura y Desarrollo Rural",
+      "category": "comercio",
+      "title": "Acuerdo por el que se declara al territorio de los Estados Unidos Mexicanos como zona libre de la viremia primaveral de la carpa en la carpa común.",
+      "url": "https://sidof.segob.gob.mx/notas/5803862"
+    },
     {
       "id": "dof-5803164",
       "source": "DOF",
