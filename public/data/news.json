@@ -1,6 +1,17 @@
 {
-  "updatedAt": "2026-11-24T02:30:30.503Z",
+  "updatedAt": "2026-11-24T11:43:36.699Z",
   "items": [
+    {
+      "id": "dof-5804790",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-24",
+      "edition": "Matutina",
+      "agency": "Secretaría de Economía",
+      "category": "comercio",
+      "title": "Acuerdo que modifica el diverso por el que la Secretaría de Economía emite reglas y criterios de carácter general en materia de comercio exterior.",
+      "url": "https://sidof.segob.gob.mx/notas/5804790"
+    },
     {
       "id": "dof-5804604",
       "source": "DOF",
