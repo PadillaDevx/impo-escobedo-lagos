@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T10:14:16.371Z",
+  "updatedAt": "2026-11-28T09:32:47.254Z",
   "items": [
     {
       "id": "dof-5805519",
@@ -11,6 +11,39 @@
       "category": "comercio",
       "title": "Decreto por el que se modifica el diverso por el que se regula la importación definitiva de vehículos usados.",
       "url": "https://sidof.segob.gob.mx/notas/5805519"
+    },
+    {
+      "id": "dof-5805623",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-27",
+      "edition": "Vespertina",
+      "agency": "Secretaría de Economía",
+      "category": "defensa",
+      "title": "Resolución final del procedimiento administrativo de revisión de las cuotas compensatorias impuestas a las importaciones de aceros planos recubiertos originarias de la República Socialista de Vietnam, independientemente del país de procedencia.",
+      "url": "https://sidof.segob.gob.mx/notas/5805623"
+    },
+    {
+      "id": "dof-5805725",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-27",
+      "edition": "Matutina",
+      "agency": "Presidencia de la República",
+      "category": "comercio",
+      "title": "Decreto por el que se modifica el diverso por el que se regula la importación definitiva de vehículos usados.",
+      "url": "https://sidof.segob.gob.mx/notas/5805725"
+    },
+    {
+      "id": "dof-5805815",
+      "source": "DOF",
+      "sourceName": "Diario Oficial de la Federación",
+      "date": "2026-11-27",
+      "edition": "Vespertina",
+      "agency": "Secretaría de Economía",
+      "category": "defensa",
+      "title": "Resolución final del procedimiento administrativo de revisión de las cuotas compensatorias impuestas a las importaciones de aceros planos recubiertos originarias de la República Socialista de Vietnam, independientemente del país de procedencia.",
+      "url": "https://sidof.segob.gob.mx/notas/5805815"
     },
     {
       "id": "dof-5804790",
